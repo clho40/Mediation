@@ -2,7 +2,7 @@
 This is a project to demostrate how to use Google AdMob's mediation feature with Huawei Ads Kit.
 
 ## Device requirement
-A device with Huawei Mobile Services (HMS) installed
+- A device with Huawei Mobile Services (HMS) installed
  
 ## Steps to run the project:
 1. Generate a keystore file
@@ -20,6 +20,10 @@ A device with Huawei Mobile Services (HMS) installed
 - In your mediation group, create a custom event and use the following as your class name
 > com.hmscl.huawei_admob_mediation_adapter.HuaweiCustomEventAdapter
 - Also, input your Huawei Ads AdUnit Id as the parameter. If you provide a Huawei Ads AdUnit Id, a test ad will be displayed
-![Custom event setting](https://ibb.co/qsJhrQS)
+
+![Custom event setting](https://i.ibb.co/SnfH3Cj/Untitled.png)
+
 - Replace the adUnit id in app\src\main\res\values\strings.xml with your Google AdMob adUnit id
 
+## Explaination:
+[How to use Huawei Ads with Google AdMob mediation (Banner Ads)](https://clho40.medium.com/how-to-use-huawei-ads-with-google-admob-mediation-banner-ads-5ff1791e750c)
