@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AdMobMediation</string>
+    <string name="admob_interstitialAdId">ca-app-pub-1479896569354723/7786852499</string>
+    <string name="admob_bannerAdId">ca-app-pub-1479896569354723/3685484632</string>
+    <string name="button_show_interstitial_ads">Show Interstitial Ads</string>
 </resources>

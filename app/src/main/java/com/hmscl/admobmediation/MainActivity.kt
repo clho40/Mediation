@@ -13,12 +13,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         MobileAds.initialize(this)
         loadBannerAds()
         loadInterstitialAds()
-
-
     }
 
     private fun loadBannerAds() {
@@ -29,12 +26,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadInterstitialAds() {
         val interstitialAd = InterstitialAd(this)
-        interstitialAd.adUnitId = "ca-app-pub-1479896569354723/7786852499"
+        interstitialAd.adUnitId = getString(R.string.admob_interstitialAdId)
         interstitialAd.loadAd(AdRequest.Builder().build())
         btn_showInterstitial.setOnClickListener {
             interstitialAd.show()
             loadInterstitialAds() //re-initialize the ad, otherwise it will only be shown once
         }
     }
-
 }

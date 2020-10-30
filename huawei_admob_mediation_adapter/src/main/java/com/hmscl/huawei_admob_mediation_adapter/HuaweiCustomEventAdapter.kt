@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation.HuaweiCustomEvent
+package com.hmscl.huawei_admob_mediation_adapter
 
 import android.content.Context
 import android.os.Bundle
@@ -9,13 +9,11 @@ import com.google.android.gms.ads.mediation.customevent.CustomEventBanner
 import com.google.android.gms.ads.mediation.customevent.CustomEventBannerListener
 import com.google.android.gms.ads.mediation.customevent.CustomEventInterstitial
 import com.google.android.gms.ads.mediation.customevent.CustomEventInterstitialListener
-import com.huawei.hms.ads.AdListener
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.BannerAdSize
 import com.huawei.hms.ads.InterstitialAd
 import com.huawei.hms.ads.banner.BannerView
 import java.lang.Exception
-
 
 class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
     private val TAG = HuaweiCustomEventAdapter::class.java.simpleName
@@ -28,12 +26,12 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
 
 
     override fun requestBannerAd(
-            context: Context?,
-            listener: CustomEventBannerListener,
-            serverParameters: String?,
-            size: AdSize,
-            mediationAdRequest: MediationAdRequest,
-            mediationExtras: Bundle?
+        context: Context?,
+        listener: CustomEventBannerListener,
+        serverParameters: String?,
+        size: AdSize,
+        mediationAdRequest: MediationAdRequest,
+        mediationExtras: Bundle?
     ) {
         try {
             huaweiBannerView= BannerView(context)
@@ -52,11 +50,11 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
     }
 
     override fun requestInterstitialAd(
-            context: Context?,
-            listener: CustomEventInterstitialListener,
-            serverParameters: String?,
-            mediationAdRequest: MediationAdRequest,
-            mediationExtras: Bundle?
+        context: Context?,
+        listener: CustomEventInterstitialListener,
+        serverParameters: String?,
+        mediationAdRequest: MediationAdRequest,
+        mediationExtras: Bundle?
     ) {
         try {
             huaweiInterstitialView = InterstitialAd(context)

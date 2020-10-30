@@ -18,7 +18,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-1479896569354723/3685484632"
+        ads:adUnitId="@string/admob_bannerAdId"
         />
 
     <Button
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Show Interstitial Ads"
+        android:text="@string/button_show_interstitial_ads"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,2 +1,3 @@
+include ':huawei_admob_mediation_adapter'
 include ':app'
 rootProject.name = "AdMobMediation"

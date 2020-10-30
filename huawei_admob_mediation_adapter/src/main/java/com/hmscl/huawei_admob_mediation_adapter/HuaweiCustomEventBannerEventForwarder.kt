@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation.HuaweiCustomEvent
+package com.hmscl.huawei_admob_mediation_adapter
 
 import android.util.Log
 import com.google.android.gms.ads.AdError
