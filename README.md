@@ -23,7 +23,7 @@ This is a project to demostrate how to use Google AdMob's mediation feature with
 
 ![Custom event setting](https://i.ibb.co/SnfH3Cj/Untitled.png)
 
-- Replace the adUnit id in app\src\main\res\values\strings.xml with your Google AdMob adUnit id
+- Replace the adUnit id in **app\src\main\res\values\strings.xml** with your Google AdMob adUnit id
 
 ## Explaination:
 [How to use Huawei Ads with Google AdMob mediation (Banner Ads)](https://clho40.medium.com/how-to-use-huawei-ads-with-google-admob-mediation-banner-ads-5ff1791e750c)
