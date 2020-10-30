@@ -3,19 +3,23 @@ package com.hmscl.huawei_admob_mediation_adapter
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.mediation.*
-import com.google.android.gms.ads.mediation.customevent.CustomEventBanner
-import com.google.android.gms.ads.mediation.customevent.CustomEventBannerListener
-import com.google.android.gms.ads.mediation.customevent.CustomEventInterstitial
-import com.google.android.gms.ads.mediation.customevent.CustomEventInterstitialListener
+import com.google.android.gms.ads.mediation.customevent.*
+import com.hmscl.huawei_admob_mediation_adapter.BannerAds.HuaweiCustomEventBannerEventForwarder
+import com.hmscl.huawei_admob_mediation_adapter.InterstitialAds.HuaweiCustomEventInterstitialEventForwarder
+import com.hmscl.huawei_admob_mediation_adapter.NativeAds.HuaweiCustomEventNativeAdsEventForwarder
+import com.hmscl.huawei_admob_mediation_adapter.NativeAds.HuaweiCustomEventNativeAdsRequest
+import com.huawei.hms.ads.AdListener
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.BannerAdSize
 import com.huawei.hms.ads.InterstitialAd
 import com.huawei.hms.ads.banner.BannerView
+import com.huawei.hms.ads.nativead.NativeAdLoader
 import java.lang.Exception
 
-class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
+class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial, CustomEventNative {
     private val TAG = HuaweiCustomEventAdapter::class.java.simpleName
 
     private lateinit var huaweiBannerView: BannerView
@@ -23,6 +27,9 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
 
     private lateinit var huaweiInterstitialView: InterstitialAd
     private var huaweiInterstitialAdId = "testb4znbuh3n2"
+
+    private lateinit var nativeAdLoader: NativeAdLoader
+    private var huaweiNativeAdId = "testy63txaom86"
 
 
     override fun requestBannerAd(
@@ -35,7 +42,7 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
     ) {
         try {
             huaweiBannerView= BannerView(context)
-            var eventForwarder = HuaweiCustomEventBannerEventForwarder(listener, huaweiBannerView)
+            val eventForwarder = HuaweiCustomEventBannerEventForwarder(listener, huaweiBannerView)
             huaweiBannerView.adListener = eventForwarder
             if (serverParameters != null) {
                 huaweiBannerAdId = serverParameters
@@ -76,6 +83,37 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
         if (huaweiInterstitialView.isLoaded) {
             huaweiInterstitialView.show()
         }
+    }
+
+    override fun requestNativeAd(
+        context: Context,
+        listener: CustomEventNativeListener?,
+        serverParameter: String?,
+        mediationAdRequest: NativeMediationAdRequest,
+        customEventExtras: Bundle?
+    ) {
+        val request = HuaweiCustomEventNativeAdsRequest()
+        val options = mediationAdRequest.nativeAdOptions
+
+        if (!mediationAdRequest.isUnifiedNativeAdRequested) {
+            listener?.onAdFailedToLoad(AdRequest.ERROR_CODE_INVALID_REQUEST)
+            return
+        }
+
+        if (serverParameter != null) {
+            huaweiNativeAdId = serverParameter
+        }
+        val eventForwarder = HuaweiCustomEventNativeAdsEventForwarder(listener!!,options)
+        val builder = NativeAdLoader.Builder(context, huaweiNativeAdId)
+        builder.setNativeAdLoadedListener { nativeAd ->
+            if (!nativeAdLoader.isLoading) {
+                eventForwarder.onNativeAdLoaded(nativeAd)
+            }
+        }.setAdListener(object: AdListener(){
+
+        })
+        nativeAdLoader = builder.build()
+        nativeAdLoader.loadAd(configureAdRequest(mediationAdRequest))
     }
 
     private fun configureAdRequest(bannerAdRequest: MediationAdRequest): AdParam {

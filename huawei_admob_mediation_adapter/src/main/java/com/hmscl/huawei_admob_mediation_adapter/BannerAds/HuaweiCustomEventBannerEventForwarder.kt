@@ -1,4 +1,4 @@
-package com.hmscl.huawei_admob_mediation_adapter
+package com.hmscl.huawei_admob_mediation_adapter.BannerAds
 
 import android.util.Log
 import com.google.android.gms.ads.AdError
