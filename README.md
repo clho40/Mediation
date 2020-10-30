@@ -19,7 +19,7 @@ This is a project to demostrate how to use Google AdMob's mediation feature with
 - You need to create matching App, AdUnits, and Mediation Group in Google AdMob console
 - In your mediation group, create a custom event and use the following as your class name
 > com.hmscl.huawei_admob_mediation_adapter.HuaweiCustomEventAdapter
-- Also, input your Huawei Ads AdUnit Id as the parameter. If you provide a Huawei Ads AdUnit Id, a test ad will be displayed
+- Also, input your Huawei Ads AdUnit Id as the parameter. If you do not provide a Huawei Ads AdUnit Id, a test ad will be displayed
 
 ![Custom event setting](https://i.ibb.co/SnfH3Cj/Untitled.png)
 
