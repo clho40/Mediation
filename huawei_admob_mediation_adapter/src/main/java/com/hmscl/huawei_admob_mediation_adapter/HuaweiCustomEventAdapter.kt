@@ -35,8 +35,8 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
     ) {
         try {
             huaweiBannerView= BannerView(context)
-            var listener = HuaweiCustomEventBannerEventForwarder(listener, huaweiBannerView)
-            huaweiBannerView.adListener = listener
+            var eventForwarder = HuaweiCustomEventBannerEventForwarder(listener, huaweiBannerView)
+            huaweiBannerView.adListener = eventForwarder
             if (serverParameters != null) {
                 huaweiBannerAdId = serverParameters
             }
@@ -73,14 +73,14 @@ class HuaweiCustomEventAdapter : CustomEventBanner, CustomEventInterstitial {
     }
 
     override fun showInterstitial() {
-        if (huaweiInterstitialView != null && huaweiInterstitialView.isLoaded) {
+        if (huaweiInterstitialView.isLoaded) {
             huaweiInterstitialView.show()
         }
     }
 
     private fun configureAdRequest(bannerAdRequest: MediationAdRequest): AdParam {
         val adParam = AdParam.Builder()
-        bannerAdRequest?.keywords?.forEach { keyword ->
+        bannerAdRequest.keywords?.forEach { keyword ->
             adParam.addKeyword(keyword)
         }
         //COPPA
