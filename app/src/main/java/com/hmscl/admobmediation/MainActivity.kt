@@ -2,7 +2,6 @@ package com.hmscl.admobmediation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.android.gms.ads.*
@@ -10,6 +9,12 @@ import com.google.android.gms.ads.formats.MediaView
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
+import com.google.android.gms.ads.initialization.InitializationStatus
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
+import com.google.android.gms.ads.rewarded.RewardItem
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdCallback
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +25,16 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this)
         loadBannerAds()
         loadInterstitialAds()
-        loadNativeAds()
+        loadNativeAds(getString(R.string.admob_nativeAdId))
+        loadRewardedAds()
+
+        btn_showTestNative.setOnClickListener {
+            loadNativeAds(getString(R.string.admob_nativeAdId_test))
+        }
+
+        btn_showMediationNative.setOnClickListener {
+            loadNativeAds(getString(R.string.admob_nativeAdId))
+        }
     }
 
     private fun loadBannerAds() {
@@ -39,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadNativeAds() {
-        val builder = AdLoader.Builder(this,getString(R.string.admob_nativeAdId))
+    private fun loadNativeAds(id: String) {
+        val builder = AdLoader.Builder(this,id)
 
         builder.forUnifiedNativeAd {unifiedNativeAd ->
             val adView = layoutInflater.inflate(R.layout.view_native_ad_unified,null) as UnifiedNativeAdView
@@ -82,7 +96,6 @@ class MainActivity : AppCompatActivity() {
         // The headline and media content are guaranteed to be in every UnifiedNativeAd.
         (adView.headlineView as TextView).text = nativeAd.headline
         adView.mediaView.setMediaContent(nativeAd.mediaContent)
-
         // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
         // check before trying to display them.
         if (nativeAd.body == null) {
@@ -97,6 +110,9 @@ class MainActivity : AppCompatActivity() {
         } else {
             adView.callToActionView.visibility = View.VISIBLE
             (adView.callToActionView as Button).text = nativeAd.callToAction
+//            (adView.callToActionView as Button).setOnClickListener {
+//                Toast.makeText(this,"Clicked",Toast.LENGTH_SHORT).show()
+//            }
         }
 
         if (nativeAd.icon == null) {
@@ -136,5 +152,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         adView.setNativeAd(nativeAd)
+    }
+
+    private fun loadRewardedAds() {
+        val rewardedAd = RewardedAd(this, getString(R.string.admob_rewardedAdId))
+        rewardedAd.loadAd(AdRequest.Builder().build(),object: RewardedAdLoadCallback() {
+            override fun onRewardedAdLoaded() {
+                btn_showRewards.isEnabled = true
+            }
+
+            override fun onRewardedAdFailedToLoad(errorCode: Int) {
+                Toast.makeText(applicationContext,"Rewarded ad failed to load Error code- $errorCode",Toast.LENGTH_SHORT).show()
+                btn_showRewards.isEnabled = false
+            }
+        })
+
+        btn_showRewards.setOnClickListener {
+            if (rewardedAd.isLoaded) {
+                val rewardedAdCallback = object : RewardedAdCallback() {
+                    override fun onUserEarnedReward(reward: RewardItem) {
+                        Toast.makeText(applicationContext,"You are rewarded with ${reward.amount} coins!",Toast.LENGTH_SHORT).show()
+                        btn_showRewards.isEnabled = false
+                    }
+                }
+                rewardedAd.show(this,rewardedAdCallback)
+            }
+        }
     }
 }
