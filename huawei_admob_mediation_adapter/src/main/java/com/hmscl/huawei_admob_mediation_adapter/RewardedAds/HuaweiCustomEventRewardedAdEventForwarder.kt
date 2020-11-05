@@ -3,6 +3,8 @@ package com.hmscl.huawei_admob_mediation_adapter.RewardedAds
 import android.app.Activity
 import android.content.Context
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.mediation.MediationAdLoadCallback
 import com.google.android.gms.ads.mediation.MediationRewardedAd
 import com.google.android.gms.ads.mediation.MediationRewardedAdCallback
@@ -21,8 +23,11 @@ class HuaweiCustomEventRewardedAdEventForwarder(
     private lateinit var rewardedAdCallback: MediationRewardedAdCallback
     private lateinit var rewardAd: RewardAd
     private var rewardAdId = "testx9dtjwj8hp"
-    fun load() {
-
+    fun load(adUnit: String?) {
+        if (adUnit != null) {
+            rewardAdId = adUnit
+        }
+        this.rewardedAdCallback = mediationAdLoadCallBack.onSuccess(this)
     }
 
     override fun showAd(context: Context?) {
@@ -35,19 +40,19 @@ class HuaweiCustomEventRewardedAdEventForwarder(
             override fun onRewardedLoaded() {
                 rewardAd.show(context as Activity?,object : RewardAdStatusListener() {
                     override fun onRewardAdClosed() {
-                        super.onRewardAdClosed()
+                        rewardedAdCallback.onAdClosed()
                     }
 
-                    override fun onRewardAdFailedToShow(p0: Int) {
-                        super.onRewardAdFailedToShow(p0)
+                    override fun onRewardAdFailedToShow(errorCode: Int) {
+                        rewardedAdCallback.onAdFailedToShow(AdError(errorCode,"Rewarded Ads","Failed to show"))
                     }
 
                     override fun onRewardAdOpened() {
-                        super.onRewardAdOpened()
+                        rewardedAdCallback.onAdOpened()
                     }
 
                     override fun onRewarded(reward: Reward) {
-                        Toast.makeText(context,"Your reward: ${reward.amount}", Toast.LENGTH_SHORT).show()
+                        rewardedAdCallback.onUserEarnedReward(HuaweiCustomEventRewardedItemMapper(reward.name,reward.amount))
                     }
                 })
             }

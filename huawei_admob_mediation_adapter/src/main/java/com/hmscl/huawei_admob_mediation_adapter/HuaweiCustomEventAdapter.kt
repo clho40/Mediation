@@ -1,15 +1,13 @@
 package com.hmscl.huawei_admob_mediation_adapter
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.initialization.AdapterStatus
 import com.google.android.gms.ads.mediation.*
 import com.google.android.gms.ads.mediation.customevent.*
+import com.google.android.gms.ads.reward.mediation.MediationRewardedVideoAdAdapter
 import com.hmscl.huawei_admob_mediation_adapter.BannerAds.HuaweiCustomEventBannerEventForwarder
 import com.hmscl.huawei_admob_mediation_adapter.InterstitialAds.HuaweiCustomEventInterstitialEventForwarder
 import com.hmscl.huawei_admob_mediation_adapter.NativeAds.HuaweiCustomEventNativeAdsEventForwarder
@@ -23,14 +21,9 @@ import com.huawei.hms.ads.VideoConfiguration
 import com.huawei.hms.ads.banner.BannerView
 import com.huawei.hms.ads.nativead.NativeAdConfiguration
 import com.huawei.hms.ads.nativead.NativeAdLoader
-import com.huawei.hms.ads.reward.Reward
-import com.huawei.hms.ads.reward.RewardAd
-import com.huawei.hms.ads.reward.RewardAdLoadListener
-import com.huawei.hms.ads.reward.RewardAdStatusListener
 
 class HuaweiCustomEventAdapter : Adapter(),
-        CustomEventBanner, CustomEventInterstitial, CustomEventNative,
-        InitializationCompleteCallback {
+        CustomEventBanner, CustomEventInterstitial, CustomEventNative{
     private val TAG = HuaweiCustomEventAdapter::class.java.simpleName
 
     private lateinit var huaweiBannerView: BannerView
@@ -41,6 +34,8 @@ class HuaweiCustomEventAdapter : Adapter(),
 
     private lateinit var nativeAdLoader: NativeAdLoader
     private var huaweiNativeAdId = "testu7m3hc4gvm"
+
+    private var huaweiRewardedAdId = "testx9dtjwj8hp"
 
     override fun requestBannerAd(
             context: Context?,
@@ -174,20 +169,7 @@ class HuaweiCustomEventAdapter : Adapter(),
             initializationCompleteCallback: InitializationCompleteCallback,
             mediationConfiguration: MutableList<MediationConfiguration>?)
     {
-        if (context !is Activity) {
-            initializationCompleteCallback.onInitializationFailed("Rewarded Ads requires an Activity context to initialize");
-            return;
-        }
 
-        initializationCompleteCallback.onInitializationSucceeded()
-    }
-
-    override fun onInitializationSucceeded() {
-        val a = "a"
-    }
-
-    override fun onInitializationFailed(p0: String?) {
-        TODO("Not yet implemented")
     }
 
     override fun getVersionInfo(): VersionInfo {
@@ -202,7 +184,8 @@ class HuaweiCustomEventAdapter : Adapter(),
             mediationRewardedAdConfiguration: MediationRewardedAdConfiguration?,
             mediationAdLoadCallback: MediationAdLoadCallback<MediationRewardedAd, MediationRewardedAdCallback>?)
     {
+        val adUnit: String? = mediationRewardedAdConfiguration?.serverParameters?.getString(MediationRewardedVideoAdAdapter.CUSTOM_EVENT_SERVER_PARAMETER_FIELD)
         val forwarder = HuaweiCustomEventRewardedAdEventForwarder(mediationRewardedAdConfiguration!!, mediationAdLoadCallback!!)
-        forwarder.load()
+        forwarder.load(adUnit)
     }
 }
