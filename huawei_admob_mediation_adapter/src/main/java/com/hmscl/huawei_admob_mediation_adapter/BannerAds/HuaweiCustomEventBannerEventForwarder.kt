@@ -12,28 +12,28 @@ class HuaweiCustomEventBannerEventForwarder(
         private var huaweiBannerView: BannerView
 ) : AdListener() {
     override fun onAdLoaded() {
-        listener?.onAdLoaded(huaweiBannerView)
+        listener.onAdLoaded(huaweiBannerView)
     }
 
     override fun onAdFailed(errorCode: Int) {
         Log.e("error--",errorCode.toString())
-        listener?.onAdFailedToLoad(AdError(AdParam.ErrorCode.INNER, AdParam.ErrorCode.INNER.toString(),"HuaweiBannerAds"))
+        listener.onAdFailedToLoad(AdError(AdParam.ErrorCode.INNER, AdParam.ErrorCode.INNER.toString(),"HuaweiBannerAds"))
     }
 
     override fun onAdClosed() {
-        listener?.onAdClosed()
+        listener.onAdClosed()
     }
 
     override fun onAdLeave() {
-        listener?.onAdLeftApplication()
+        listener.onAdLeftApplication()
     }
 
     override fun onAdOpened() {
-        listener?.onAdOpened()
+        listener.onAdOpened()
     }
 
     override fun onAdClicked() {
-        listener?.onAdClicked()
+        listener.onAdClicked()
 
     }
 

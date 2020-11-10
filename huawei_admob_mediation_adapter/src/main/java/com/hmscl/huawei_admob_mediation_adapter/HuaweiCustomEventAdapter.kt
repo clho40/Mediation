@@ -98,7 +98,7 @@ class HuaweiCustomEventAdapter : Adapter(),
             customEventExtras: Bundle?
     ) {
         try {
-            val request = HuaweiCustomEventNativeAdsRequest()
+//            val request = HuaweiCustomEventNativeAdsRequest()
             val options = mediationAdRequest.nativeAdOptions
 
             if (!mediationAdRequest.isUnifiedNativeAdRequested) {
@@ -122,7 +122,7 @@ class HuaweiCustomEventAdapter : Adapter(),
                 huaweiNativeAdId = serverParameter
             }
             val loadedEventForwarder = HuaweiCustomEventNativeAdsLoadedEventForwarder(listener!!, options, context)
-            val adEventForwarder = HuaweiCustomEventNativeAdsEventForwarder(listener!!, options)
+            val adEventForwarder = HuaweiCustomEventNativeAdsEventForwarder(listener, options)
             val builder = NativeAdLoader.Builder(context, huaweiNativeAdId)
             builder.setNativeAdOptions(adConfiguration)
             builder.setNativeAdLoadedListener { nativeAd ->

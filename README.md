@@ -1,6 +1,29 @@
 # AdMobMediation-Demo
 This is a project to demostrate how to use Google AdMob's mediation feature with Huawei Ads Kit.
 
+## How to use
+In your project-level build.gradle, include Huawei's Maven repository
+>repositories {
+>        google()
+>        jcenter()
+>        maven { url 'https://developer.huawei.com/repo/' } // Add this line
+>    }
+> ...
+>allprojects {
+>    repositories {
+>        google()
+>        jcenter()
+>        maven { url 'https://developer.huawei.com/repo/' } //Add this line
+>    }
+>}
+
+In your app-level build.gradle, include Huawei Ads dependency (required by the adapter) and the adapter
+>dependencies {
+>    ...
+>    implementation 'com.huawei.hms:ads-lite:13.4.33.300'
+>    implementation project(path: ':huawei_admob_mediation_adapter')
+>}
+
 ## Device requirement
 - A device with Huawei Mobile Services (HMS) installed
  
@@ -13,6 +36,8 @@ This is a project to demostrate how to use Google AdMob's mediation feature with
 ## Supported ad type:
 1. Banner
 2. Interstitial
+3. Rewarded
+4. Native
 
 ## If you would like to use your own Google AdMob AdUnits, Mediation Group:
 - You need an activated Google AdMob account

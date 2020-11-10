@@ -14,28 +14,28 @@ class HuaweiCustomEventInterstitialEventForwarder(
         private var huaweiInterstitialView: InterstitialAd
 ) : AdListener() {
     override fun onAdLoaded() {
-        listener?.onAdLoaded()
+        listener.onAdLoaded()
     }
 
     override fun onAdFailed(errorCode: Int) {
         Log.e("error--",errorCode.toString())
-        listener?.onAdFailedToLoad(AdError(AdParam.ErrorCode.INNER, AdParam.ErrorCode.INNER.toString(),"HuaweiInterstitialAds"))
+        listener.onAdFailedToLoad(AdError(AdParam.ErrorCode.INNER, AdParam.ErrorCode.INNER.toString(),"HuaweiInterstitialAds"))
     }
 
     override fun onAdClosed() {
-        listener?.onAdClosed()
+        listener.onAdClosed()
     }
 
     override fun onAdLeave() {
-        listener?.onAdLeftApplication()
+        listener.onAdLeftApplication()
     }
 
     override fun onAdOpened() {
-        listener?.onAdOpened()
+        listener.onAdOpened()
     }
 
     override fun onAdClicked() {
-        listener?.onAdClicked()
+        listener.onAdClicked()
 
     }
 
