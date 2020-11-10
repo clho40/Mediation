@@ -15,14 +15,14 @@ In your project-level build.gradle, include Huawei's Maven repository
 ```
 repositories {
         google()
-        jcenter()
+        jcenter() // Also, make sure jcenter() included
         maven { url 'https://developer.huawei.com/repo/' } // Add this line
 }
  ...
 allprojects {
     repositories {
         google()
-        jcenter()
+        jcenter() // Also, make sure jcenter() included
         maven { url 'https://developer.huawei.com/repo/' } //Add this line
     }
 }
