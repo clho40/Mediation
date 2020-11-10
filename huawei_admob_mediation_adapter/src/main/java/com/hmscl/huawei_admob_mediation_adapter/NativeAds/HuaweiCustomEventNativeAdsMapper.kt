@@ -1,16 +1,26 @@
 package com.hmscl.huawei_admob_mediation_adapter.NativeAds
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import com.google.android.gms.ads.mediation.UnifiedNativeAdMapper
 import com.huawei.hms.ads.nativead.NativeAd
 
 class HuaweiCustomEventNativeAdsMapper(
-    private var huaweiNativeAd: NativeAd
+    private var huaweiNativeAd: NativeAd,
+    private val context: Context
 ): UnifiedNativeAdMapper() {
     private var bundleData: Bundle? = null
     init {
-        adChoicesContent = null //huaweiNativeAd.choicesInfo //missing in doc
+        if (huaweiNativeAd.choicesInfo.content != "" && huaweiNativeAd.choicesInfo.icons.size > 0) {
+            val whyThisAd: Button = Button(context)
+            whyThisAd.setCompoundDrawables(huaweiNativeAd.choicesInfo.icons[0].drawable,null,null,null)
+            whyThisAd.text = huaweiNativeAd.choicesInfo.content
+            whyThisAd.setOnClickListener { huaweiNativeAd.gotoWhyThisAdPage(context) }
+            adChoicesContent = whyThisAd //huaweiNativeAd.choicesInfo //missing in doc
+        }
         advertiser = huaweiNativeAd.adSource
         body = huaweiNativeAd.description
         callToAction = huaweiNativeAd.callToAction

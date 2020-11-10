@@ -65,7 +65,11 @@ class MainActivity : AppCompatActivity() {
 
         val videoOptions = VideoOptions.Builder().setStartMuted(true).build()
 
-        val adOptions = NativeAdOptions.Builder().setVideoOptions(videoOptions).build()
+        val adOptions = NativeAdOptions.Builder()
+            .setVideoOptions(videoOptions)
+            .setRequestCustomMuteThisAd(true)
+            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+            .build()
 
         builder.withNativeAdOptions(adOptions)
 
