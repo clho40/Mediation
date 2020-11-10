@@ -7,7 +7,7 @@ This is a project to demostrate how to use Google AdMob's mediation feature with
 3. Go to **Mediation > Create a new Mediation Group** (or, use one of your existing Mediation groups)
 4. Under the **Ad Sources** section, click **Add Custom Event**. Give it a label (eg: Huawei Banner Custom Event) and an eCPM, click **Continue**
 5. Enter _**com.hmscl.huawei_admob_mediation_adapter.HuaweiCustomEventAdapter**_ as the Class Name, and your Huawei's AdUnit ID from step 1 as the parameter
-6. Add the adapter into your project (refer to the _How to Use_ section)
+6. Add the adapter and its dependencies into your project (refer to the _How to Use_ section)
 6. Done
 
 ## How to use
