@@ -50,7 +50,6 @@ android {
 }
 
 dependencies {
-
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -61,5 +60,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.gms:play-services-ads:19.5.0'
     implementation 'com.huawei.hms:ads-lite:13.4.33.300'
-    implementation 'com.hmscl:huawei_admob_mediation_adapter:1.0'
+    implementation 'com.hmscl:huawei_admob_mediation_adapter:1.2'
 }

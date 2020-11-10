@@ -2,6 +2,11 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
+ext {
+    PUBLISH_GROUP_ID = 'com.hmscl'
+    PUBLISH_ARTIFACT_ID = 'huawei_admob_mediation_adapter'
+    PUBLISH_VERSION = '1.2'
+}
 
 apply from: 'publish.gradle'
 
@@ -33,6 +38,7 @@ android {
         jvmTarget = '1.8'
     }
 }
+
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

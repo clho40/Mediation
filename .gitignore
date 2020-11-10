@@ -177,3 +177,4 @@ fabric.properties
 .externalNativeBuild
 .cxx
 local.properties
+huawei_admob_mediation_adapter/publish.gradle
