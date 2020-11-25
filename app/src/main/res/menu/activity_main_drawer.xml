@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="AdMob Mediation">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_admob"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Overview" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="MoPub Mediation">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_mopub"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Overview" />
+
+                <item
+                    android:id="@+id/nav_mopub_recyclerview"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Recycler View" />
+            </group>
+        </menu>
+    </item>
+</menu>

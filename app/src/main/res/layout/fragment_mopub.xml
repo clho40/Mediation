@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mopub.MopubFragment">
+
+    <RelativeLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/native_ad_frame"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mopub_banner"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+<!--        <Button-->
+<!--            android:id="@+id/btn_showTestNative"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Show MoPub test native ad"-->
+<!--            >-->
+<!--        </Button>-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_showMediationNative"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Show MoPub mediation native ad"-->
+<!--            >-->
+
+<!--        </Button>-->
+
+        <Button
+            android:id="@+id/btn_showInterstitial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_show_interstitial_ads"
+            android:enabled="false"
+            />
+        <Button
+            android:id="@+id/btn_showRewards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_rewarded_ads"
+            android:enabled="false"
+            />
+
+    </LinearLayout>
+
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/mopub_banner"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        app:moPubAdSize="match_view"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

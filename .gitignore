@@ -178,3 +178,4 @@ fabric.properties
 .cxx
 local.properties
 huawei_admob_mediation_adapter/publish.gradle
+mopub-mediation-huawei/publish.gradle
