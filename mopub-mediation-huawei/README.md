@@ -42,6 +42,8 @@ dependencies {
 | Banner Ad      | com.mopub.mobileads.HuaweiAdsBanner |
 | Interstitial Ad      | com.mopub.mobileads.HuaweiAdsInterstitial     |
 | Rewarded Video Ad | com.mopub.mobileads.HuaweiAdsRewardedVideo     |
+| Native Ad (Basic) | com.mopub.nativeads.HuaweiAdsNativeBasic    |
+| Native Ad (Advanced) | com.mopub.nativeads.HuaweiAdsNativeAdvanced    |
 
 ## Custom event data
 ```
@@ -54,6 +56,22 @@ dependencies {
 }
 ```
 Other values are optional
+
+## Native Ad Advanced
+You need to register your own Ad Renderer using HuaweiAdsAdRenderer class.
+```
+val huaweiAdsAdRenderer = HuaweiAdsAdRenderer(
+            HuaweiAdsViewBinder.Builder(R.layout.view_mopub_nativead_huawei)
+                .titleId(R.id.native_title)
+                .textId(R.id.native_text)
+                .mediaLayoutId(R.id.native_media_layout)
+                .iconImageId(R.id.native_icon_image)
+                .callToActionId(R.id.native_cta)
+                .privacyInformationIconImageId(R.id.native_privacy_information_icon_image)
+                .build())
+
+mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
+```
 
 ## Device requirement
 - A device with Huawei Mobile Services (HMS) installed
