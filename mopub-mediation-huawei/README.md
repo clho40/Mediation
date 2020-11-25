@@ -36,15 +36,21 @@ dependencies {
 }
 ```
 
+## Custom event class
+**Banner Ad:** com.mopub.mobileads.HuaweiAdsBanner
+**Interstitial Ad:** com.mopub.mobileads.HuaweiAdsInterstitial
+**Rewarded Video Ad:** com.mopub.mobileads.HuaweiAdsRewardedVideo
+
+## Custom event data
+```
+{"appid":"111","adUnitID": "222", "tagForChildDirectedTreatment": "false", "TAG_FOR_UNDER_AGE_OF_CONSENT_KEY": "false", "contentUrl" : "abc"}
+```
+**Required:** adUnitID
+Other values are optional
+
 ## Device requirement
 - A device with Huawei Mobile Services (HMS) installed
  
-## Steps to run the project:
-1. Generate a keystore file
-2. Place the keystore file in the app directory
-3. Modify the app module build.gradle file - update the signingConfigs to your keystore's setting
-4. Build the project or run the app in your device / emulator
-
 ## Supported ad type:
 1. Banner
 2. Interstitial
