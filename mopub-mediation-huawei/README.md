@@ -37,15 +37,22 @@ dependencies {
 ```
 
 ## Custom event class
-**Banner Ad:** com.mopub.mobileads.HuaweiAdsBanner
-**Interstitial Ad:** com.mopub.mobileads.HuaweiAdsInterstitial
-**Rewarded Video Ad:** com.mopub.mobileads.HuaweiAdsRewardedVideo
+| Ad Type        | Custom event class           |
+| ------------- |:-------------:|
+| Banner Ad      | com.mopub.mobileads.HuaweiAdsBanner |
+| Interstitial Ad      | com.mopub.mobileads.HuaweiAdsInterstitial     |
+| Rewarded Video Ad | com.mopub.mobileads.HuaweiAdsRewardedVideo     |
 
 ## Custom event data
 ```
-{"appid":"111","adUnitID": "222", "tagForChildDirectedTreatment": "false", "TAG_FOR_UNDER_AGE_OF_CONSENT_KEY": "false", "contentUrl" : "abc"}
+{
+    "adUnitID": "222",  <-- Required
+    "appid":"111",
+    "tagForChildDirectedTreatment": "false", 
+    "TAG_FOR_UNDER_AGE_OF_CONSENT_KEY": "false", 
+    "contentUrl" : "abc"
+}
 ```
-**Required:** adUnitID
 Other values are optional
 
 ## Device requirement
