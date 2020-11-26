@@ -5,7 +5,7 @@ plugins {
 ext {
     PUBLISH_GROUP_ID = 'com.hmscl.huawei.ads'
     PUBLISH_ARTIFACT_ID = 'mediation_adapter_admob'
-    PUBLISH_VERSION = '1.2'
+    PUBLISH_VERSION = '1.4'
 }
 
 apply from: 'publish.gradle'
