@@ -39,7 +39,7 @@
         android:textColor="@android:color/darker_gray" />
 
 
-    <com.mopub.nativeads.HuaweiAdsMediaLayout
+    <com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsMediaLayout
         android:id="@+id/native_media_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

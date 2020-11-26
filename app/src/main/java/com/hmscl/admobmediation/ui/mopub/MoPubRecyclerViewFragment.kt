@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.hmscl.admobmediation.R
 import com.hmscl.admobmediation.Utils
+import com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsAdRenderer
+import com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsViewBinder
 import com.mopub.common.MoPub
 import com.mopub.common.SdkConfiguration
 import com.mopub.common.SdkInitializationListener

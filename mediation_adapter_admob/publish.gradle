@@ -1,0 +1,149 @@
+import org.apache.tools.ant.taskdefs.condition.Os;
+apply plugin: 'com.github.dcendents.android-maven'
+
+// Bintray
+Properties properties = new Properties()
+properties.load(file('local.properties').newDataInputStream())
+
+group = properties.getProperty("bintray.groupId")
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId properties.getProperty("bintray.groupId")
+                artifactId properties.getProperty("bintray.artifact")
+
+                name properties.getProperty("bintray.libraryName")
+                description properties.getProperty("bintray.libraryDescription")
+                url properties.getProperty("bintray.siteUrl")
+
+                licenses {
+                    license {
+                        name properties.getProperty("bintray.licenseName")
+                        url properties.getProperty("bintray.licenseUrl")
+                    }
+                }
+                developers {
+                    developer {
+                        id properties.getProperty("bintray.developerId")
+                        name properties.getProperty("bintray.developerName")
+                        email properties.getProperty("bintray.developerEmail")
+                    }
+                }
+                scm {
+                    connection properties.getProperty("bintray.gitUrl")
+                    developerConnection properties.getProperty("bintray.gitUrl")
+                    url properties.getProperty("bintray.siteUrl")
+                }
+            }
+        }
+    }
+}
+
+apply plugin: 'com.jfrog.bintray'
+
+version = properties.getProperty("bintray.libraryVersion")
+
+if (project.hasProperty("android")) { // Android libraries
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+    if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+        task javadoc(type: Javadoc) {
+            source = android.sourceSets.main.java.srcDirs
+            classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        }
+    }
+} else { // Java libraries
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+}
+
+artifacts {
+    if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+        archives javadocJar
+    }
+    archives sourcesJar
+}
+
+
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = properties.getProperty("bintray.repo")
+        name = properties.getProperty("bintray.artifact")
+        desc = properties.getProperty("bintray.libraryDescription")
+        websiteUrl = properties.getProperty("bintray.siteUrl")
+        vcsUrl = properties.getProperty("bintray.gitUrl")
+        licenses = properties.getProperty("bintray.allLicenses").split(',')
+        publish = true
+        publicDownloadNumbers = false
+        version {
+            desc = properties.getProperty("bintray.libraryDescription")
+            gpg {
+                sign = false //Determines whether to GPG sign the files. The default is false
+                //Optional. The passphrase for GPG signing'
+                //passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
+    }
+}
+//
+//publishing {
+//    publications {
+//        Production(MavenPublication) {
+//            artifact("$buildDir/outputs/aar/huawei_admob_mediation_adapter-release.aar")
+//            groupId this.group
+//            artifactId 'huawei_admob_mediation_adapter'
+//            version this.version
+//
+//            pom.withXml {
+//                def dependenciesNode = asNode().appendNode('dependencies')
+//                configurations.implementation.allDependencies.each {
+//                    if (it.name != 'unspecified') {
+//                        def dependencyNode = dependenciesNode.appendNode('dependency')
+//                        dependencyNode.appendNode('groupId', it.group)
+//                        dependencyNode.appendNode('artifactId', it.name)
+//                        dependencyNode.appendNode('version', it.version)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//bintray {
+//    user = properties.getProperty('bintray.user')
+//    key = properties.getProperty('bintray.apikey')
+//    publications = ['Production']
+//    configurations = ['archives']
+//    dryRun = false
+//    override = false
+//    publish = true
+//    pkg {
+//        repo = 'huawei_admob_mediation_adapter'
+//        name = 'com.hmscl.huawei_admob_mediation_adapter'
+//        version {
+//            name = this.version
+//            released = new Date()
+//            vcsTag = this.version
+//        }
+//    }
+//}

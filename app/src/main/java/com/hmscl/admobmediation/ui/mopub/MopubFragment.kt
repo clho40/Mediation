@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.hmscl.admobmediation.R
 import com.hmscl.admobmediation.Utils
+import com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsAdRenderer
+import com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsViewBinder
 import com.mopub.common.MoPub
 import com.mopub.common.MoPubReward
 import com.mopub.common.SdkConfiguration
@@ -20,7 +20,6 @@ import com.mopub.mobileads.MoPubRewardedVideoListener
 import com.mopub.mobileads.MoPubRewardedVideos
 import com.mopub.nativeads.*
 import kotlinx.android.synthetic.main.fragment_mopub.*
-import java.util.*
 
 class MopubFragment : Fragment() {
     lateinit var mopubListener: MoPubListeners
