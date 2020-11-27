@@ -14,13 +14,13 @@ class HuaweiAdsCustomEventDataKeys {
         /* Custom Event Data - to be filled on MoPub Platform
         Banner, Interstitial, Rewarded
         {"appid":"111","adUnitID": "222", "tagForChildDirectedTreatment": "false",
-        "TAG_FOR_UNDER_AGE_OF_CONSENT_KEY": "false", "contentUrl" : "abc"
+        "tagForUnderAgeOfConsent": "false", "contentUrl" : "abc"
         }
 
         Native
         {
         "appid":"111","adUnitID": "222", "tagForChildDirectedTreatment": "false",
-        "TAG_FOR_UNDER_AGE_OF_CONSENT_KEY": "false", "contentUrl" : "abc",
+        "tagForUnderAgeOfConsent": "false", "contentUrl" : "abc",
         "orientation_preference": "aaa", "ad_choices_placement": "bbb", "swap_margins": "ccc"
         }
         */

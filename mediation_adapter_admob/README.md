@@ -33,7 +33,7 @@ In your app-level build.gradle, include Huawei Ads dependency (required by the a
 dependencies {
     ...
     implementation 'com.huawei.hms:ads-lite:13.4.33.300'
-    implementation 'com.hmscl.huawei.ads.mediation_adapter_admob:1.3'
+    implementation 'com.hmscl.huawei.ads.mediation_adapter_admob:1.4'
 }
 ```
 

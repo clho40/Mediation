@@ -1,7 +1,6 @@
 package com.hmscl.mediationdemo.ui.addapptr
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.hmscl.mediationdemo.R
 import com.hmscl.mediationdemo.Utils
-import com.intentsoftware.addapptr.AATKit
-import com.intentsoftware.addapptr.AATKitConfiguration
-import com.intentsoftware.addapptr.BannerPlacementLayout
-import com.intentsoftware.addapptr.PlacementSize
+import com.intentsoftware.addapptr.*
 import com.intentsoftware.addapptr.ad.VASTAdData
 import kotlinx.android.synthetic.main.fragment_addapptr.*
 
@@ -21,6 +17,9 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
     private lateinit var configuration: AATKitConfiguration
     private var stickyBannerId = -1
     private var multisizeBannerId = -1
+    private var fullscreenId = -1
+    private var rewardedId = -1
+    private lateinit var inFeedBannerPlacement: BannerPlacement
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,11 +33,50 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
         configuration.setDelegate(this)
         configuration.setTestModeAccountId(2426)
         AATKit.init(configuration)
+
+        btn_showFullscreenAd.setOnClickListener {
+            showFullscreenAds()
+        }
+
+        btn_showRewardedAd.setOnClickListener {
+            showRewardedAds()
+        }
+    }
+
+    private fun showRewardedAds() {
+        AATKit.showPlacement(rewardedId)
+    }
+
+    private fun showFullscreenAds() {
+        AATKit.showPlacement(fullscreenId)
     }
 
     private fun loadAds() {
         loadStickyBanner()
         loadMultisizeBanner()
+//        loadInFeedBanners()
+        loadFullscreenAds()
+        loadRewardedAds()
+    }
+
+    private fun loadRewardedAds() {
+        rewardedId = AATKit.createRewardedVideoPlacement("TestRewarded")
+        AATKit.startPlacementAutoReload(rewardedId)
+    }
+
+    private fun loadFullscreenAds() {
+        fullscreenId = AATKit.createPlacement("TestFullscreen",PlacementSize.Fullscreen)
+        AATKit.startPlacementAutoReload(fullscreenId)
+    }
+
+    private fun loadInFeedBanners() {
+        val config = BannerConfiguration()
+        inFeedBannerPlacement = AATKit.createBannerPlacement("TestInFeedBanner",config)
+        val request = BannerRequest(null)
+        val listener = BannerRequestCompletionListener { layout, error ->
+
+        }
+        inFeedBannerPlacement.requestAd(request,listener)
     }
 
     private fun loadStickyBanner() {
@@ -69,6 +107,8 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
             val parent = multisizeBannerView.parent as ViewGroup
             parent.removeView(multisizeBannerView)
         }
+
+        AATKit.stopPlacementAutoReload(fullscreenId)
     }
 
     override fun onResume() {
@@ -104,7 +144,9 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
     }
 
     override fun aatkitUserEarnedIncentive(placementId: Int) {
-        Utils.showToast(requireContext(), "User earned")
+        if (placementId == rewardedId) {
+            Utils.showToast(requireContext(), "User earned")
+        }
     }
 
     override fun aatkitObtainedAdRules(fromTheServer: Boolean) {

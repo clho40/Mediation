@@ -39,4 +39,20 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
+    <Button
+        android:id="@+id/btn_showFullscreenAd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Fullscreen Ads"
+        />
+    <Button
+        android:id="@+id/btn_showRewardedAd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Rewarded Ads"
+        />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
 </LinearLayout>
