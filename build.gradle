@@ -5,6 +5,10 @@ buildscript {
         google()
         jcenter()
         maven { url 'https://developer.huawei.com/repo/' }
+        maven {
+            url 'http://android-sdk.aatkit.com/maven/'
+        }
+        maven { url "https://s3.amazonaws.com/smaato-sdk-releases/" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
@@ -19,6 +23,10 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://developer.huawei.com/repo/' }
+        maven {
+            url 'http://android-sdk.aatkit.com/maven/'
+        }
+        maven { url "https://s3.amazonaws.com/smaato-sdk-releases/" }
     }
 }
 

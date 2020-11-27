@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation
+package com.hmscl.mediationdemo
 
 import android.content.Context
 import android.widget.Toast

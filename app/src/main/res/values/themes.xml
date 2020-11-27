@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AdMobMediation" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.MediationDemo" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,12 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.AdMobMediation.NoActionBar">
+    <style name="Theme.MediationDemo.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.AdMobMediation.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MediationDemo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.AdMobMediation.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.MediationDemo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

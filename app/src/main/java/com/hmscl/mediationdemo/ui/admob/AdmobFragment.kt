@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation.ui.admob
+package com.hmscl.mediationdemo.ui.admob
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,7 +17,7 @@ import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdCallback
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-import com.hmscl.admobmediation.R
+import com.hmscl.mediationdemo.R
 import kotlinx.android.synthetic.main.fragment_admob.*
 
 class AdmobFragment : Fragment() {

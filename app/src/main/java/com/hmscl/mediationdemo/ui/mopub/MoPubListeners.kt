@@ -1,7 +1,7 @@
-package com.hmscl.admobmediation.ui.mopub
+package com.hmscl.mediationdemo.ui.mopub
 
 import android.content.Context
-import com.hmscl.admobmediation.Utils
+import com.hmscl.mediationdemo.Utils
 import com.mopub.mobileads.MoPubErrorCode
 import com.mopub.mobileads.MoPubInterstitial
 import com.mopub.mobileads.MoPubView

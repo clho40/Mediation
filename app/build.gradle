@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.hmscl.admobmediation"
+        applicationId "com.hmscl.mediationdemo"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 2
@@ -79,5 +79,9 @@ dependencies {
 //   implementation 'com.hmscl:huawei_admob_mediation_adapter:1.2'
     implementation 'com.hmscl.huawei.ads:mediation_adapter_admob:1.4'
     implementation 'com.hmscl.huawei.ads:mediation_adapter_mopub:1.2'
+    implementation 'com.huawei.hms:ads-identifier:3.4.30.301'
+    implementation ('com.intentsoftware.addapptr:AATKit:2.28.13') {
+        transitive = true
+    }
 
 }

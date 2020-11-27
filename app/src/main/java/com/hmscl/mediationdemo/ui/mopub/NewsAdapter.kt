@@ -1,12 +1,11 @@
-package com.hmscl.admobmediation.ui.mopub
+package com.hmscl.mediationdemo.ui.mopub
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.hmscl.admobmediation.R
+import com.hmscl.mediationdemo.R
 
 class NewsAdapter(var newsList: List<NewsModel>) : RecyclerView.Adapter<NewsAdapter.NewsCardViewHolder>() {
     inner class NewsCardViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

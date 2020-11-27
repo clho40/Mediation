@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation.ui.mopub
+package com.hmscl.mediationdemo.ui.mopub
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.hmscl.admobmediation.R
-import com.hmscl.admobmediation.Utils
+import com.hmscl.mediationdemo.R
+import com.hmscl.mediationdemo.Utils
 import com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsAdRenderer
 import com.hmscl.huawei.ads.mediation_adapter_mopub.utils.HuaweiAdsViewBinder
 import com.mopub.common.MoPub

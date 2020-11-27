@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation.ui.mopub
+package com.hmscl.mediationdemo.ui.mopub
 
 data class NewsListModel(
     var data: List<NewsModel>

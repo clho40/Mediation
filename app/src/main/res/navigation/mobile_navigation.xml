@@ -3,21 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_mopub">
+    app:startDestination="@id/nav_addapptr">
 
     <fragment
         android:id="@+id/nav_admob"
-        android:name="com.hmscl.admobmediation.ui.admob.AdmobFragment"
+        android:name="com.hmscl.mediationdemo.ui.admob.AdmobFragment"
         android:label="AdMob Mediation"
         tools:layout="@layout/fragment_admob" />
     <fragment
         android:id="@+id/nav_mopub"
-        android:name="com.hmscl.admobmediation.ui.mopub.MopubFragment"
+        android:name="com.hmscl.mediationdemo.ui.mopub.MopubFragment"
         android:label="MoPub Mediation"
         tools:layout="@layout/fragment_mopub" />
     <fragment
         android:id="@+id/nav_mopub_recyclerview"
-        android:name="com.hmscl.admobmediation.ui.mopub.MoPubRecyclerViewFragment"
+        android:name="com.hmscl.mediationdemo.ui.mopub.MoPubRecyclerViewFragment"
         android:label="fragment_mo_pub_recycler_view"
         tools:layout="@layout/fragment_mo_pub_recycler_view" />
+    <fragment
+        android:id="@+id/nav_addapptr"
+        android:name="com.hmscl.mediationdemo.ui.addapptr.AddapptrFragment"
+        android:label="fragment_addapptr"
+        tools:layout="@layout/fragment_addapptr" />
 </navigation>

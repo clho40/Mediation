@@ -28,4 +28,14 @@
             </group>
         </menu>
     </item>
+    <item android:title="Addapptr Mediation">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_addapptr"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Overview" />
+            </group>
+        </menu>
+    </item>
 </menu>

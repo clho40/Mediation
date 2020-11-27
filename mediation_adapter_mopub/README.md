@@ -42,7 +42,7 @@ dependencies {
 | Banner Ad      | com.hmscl.huawei.ads.mediation_adapter_mopub.banner |
 | Interstitial Ad      | com.hmscl.huawei.ads.mediation_adapter_mopub.interstitial     |
 | Rewarded Video Ad | com.hmscl.huawei.ads.mediation_adapter_mopub.rewarded     |
-| Native Ad (Basic) | ccom.hmscl.huawei.ads.mediation_adapter_mopub.native_nasic    |
+| Native Ad (Basic) | ccom.hmscl.huawei.ads.mediation_adapter_mopub.native_basic    |
 | Native Ad (Advanced) | com.hmscl.huawei.ads.mediation_adapter_mopub.native_advanced    |
 
 ## Custom event data

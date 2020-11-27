@@ -1,4 +1,4 @@
-package com.hmscl.admobmediation
+package com.hmscl.mediationdemo
 
 import android.os.Bundle
 import android.view.Menu
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_admob, R.id.nav_mopub, R.id.nav_mopub_recyclerview
+                R.id.nav_admob, R.id.nav_mopub, R.id.nav_mopub_recyclerview,R.id.nav_addapptr
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
