@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.hmscl.mediationdemo.R
 import com.hmscl.mediationdemo.Utils
+import com.huawei.hms.ads.nativead.NativeView
 import com.intentsoftware.addapptr.*
 import com.intentsoftware.addapptr.ad.VASTAdData
 import kotlinx.android.synthetic.main.fragment_addapptr.*
@@ -20,6 +21,7 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
     private var fullscreenId = -1
     private var rewardedId = -1
     private lateinit var inFeedBannerPlacement: BannerPlacement
+    private var nativeId = -1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +33,7 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
         super.onActivityCreated(savedInstanceState)
         configuration = AATKitConfiguration(requireActivity().application)
         configuration.setDelegate(this)
-        configuration.setTestModeAccountId(2426)
+//        configuration.setTestModeAccountId(2426)
         AATKit.init(configuration)
 
         btn_showFullscreenAd.setOnClickListener {
@@ -57,15 +59,45 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
 //        loadInFeedBanners()
         loadFullscreenAds()
         loadRewardedAds()
+        loadNativeAds()
+    }
+
+    private fun loadNativeAds() {
+        nativeId = AATKit.createNativeAdPlacement("Native",true)
+        AATKit.reloadPlacement(nativeId)
+
+        val nativeAd = AATKit.getNativeAd(nativeId)
+        if (nativeAd != null && AATKit.isNativeAdExpired(nativeAd) && AATKit.isNativeAdReady(nativeAd)) {
+            AATKit.reportAdSpaceForPlacement(nativeId)
+            val network = AATKit.getNativeAdNetwork(nativeAd)
+            val networkExtraView = AATKit.getNativeAdBrandingLogo(nativeAd)
+            val type = AATKit.getNativeAdType(nativeAd)
+
+            var nativeBannerView: ViewGroup? = null
+            var mainImageView: View? = null
+            var iconView: View? = null
+
+            when (network) {
+                AdNetwork.HUAWEI -> {
+                    nativeBannerView = native_video_view as NativeView
+                    nativeBannerView.titleView = ad_title
+                    nativeBannerView.mediaView = ad_media
+                    nativeBannerView.adSourceView = ad_source
+                    nativeBannerView.callToActionView = ad_call_to_action
+                }
+            }
+
+            AATKit.attachNativeAdToLayout(nativeAd,nativeBannerView,mainImageView,iconView)
+        }
     }
 
     private fun loadRewardedAds() {
-        rewardedId = AATKit.createRewardedVideoPlacement("TestRewarded")
+        rewardedId = AATKit.createRewardedVideoPlacement("RewardedVideo")
         AATKit.startPlacementAutoReload(rewardedId)
     }
 
     private fun loadFullscreenAds() {
-        fullscreenId = AATKit.createPlacement("TestFullscreen",PlacementSize.Fullscreen)
+        fullscreenId = AATKit.createPlacement("Fullscreen",PlacementSize.Fullscreen)
         AATKit.startPlacementAutoReload(fullscreenId)
     }
 
@@ -150,11 +182,11 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
     }
 
     override fun aatkitObtainedAdRules(fromTheServer: Boolean) {
-        Utils.showToast(requireContext(), "Obtained Ad Rules - $fromTheServer")
+//        Utils.showToast(requireContext(), "Obtained Ad Rules - $fromTheServer")
     }
 
     override fun aatkitUnknownBundleId() {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 
     override fun aatkitHaveAdForPlacementWithBannerView(
@@ -167,6 +199,6 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
     }
 
     override fun aatkitHaveVASTAd(placementId: Int, data: VASTAdData?) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 }
