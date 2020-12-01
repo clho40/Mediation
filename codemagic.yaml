@@ -13,7 +13,7 @@ workflows:
                 FCI_KEYSTORE_PASSWORD: Encrypted(Z0FBQUFBQmZ4bTRZZkJQdVBHcDg0MnBBRVpMZk5ucnotRFJHcFdmckU2UkdlSG1GSHl6N0t2TE9sUHZiVlZDT3c5UzBHU3YwaS1JWC10TGZyWEJuQlI1bjdFajdEUEhLWEE9PQ==)
         scripts:
             - name: Set up local properties
-            script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/local.properties"
+              script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/local.properties"
             - name: Set up key.properties file for code signing
             script: |
                 echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
