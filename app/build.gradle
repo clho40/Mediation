@@ -7,12 +7,12 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
+    def appVersionCode = Integer.valueOf(System.env.BUILD_NUMBER ?: 2)
     defaultConfig {
         applicationId "com.hmscl.mediationdemo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 2
+        versionCode appVersionCode
         versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -23,12 +23,21 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('keystore.jks')
-            keyAlias properties.getProperty('keystore.keyAlias')
-            keyPassword properties.getProperty('keystore.keyPassword')
-            storePassword properties.getProperty('keystore.storePassword')
-            v1SigningEnabled true
-            v2SigningEnabled true
+            if (System.getenv()["CI"]) {
+                storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
+                storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
+                keyAlias System.getenv()["FCI_KEY_ALIAS"]
+                keyPassword System.getenv()["FCI_KEY_PASSWORD"]
+                v1SigningEnabled true
+                v2SigningEnabled true
+            } else {
+                storeFile file('keystore.jks')
+                keyAlias properties.getProperty('keystore.keyAlias')
+                keyPassword properties.getProperty('keystore.keyPassword')
+                storePassword properties.getProperty('keystore.storePassword')
+                v1SigningEnabled true
+                v2SigningEnabled true
+            }
         }
     }
 
