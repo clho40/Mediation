@@ -1,0 +1,9 @@
+# Check out https://docs.codemagic.io/getting-started/building-a-native-android-app/ for more information
+
+workflows:
+    android-app:
+        name: Mediation Demo
+        scripts:
+            - ./gradlew build
+        artifacts:
+            - app/build/outputs/apk/**/*.apk
