@@ -24,6 +24,7 @@ workflows:
         script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/local.properties"
       - name: Set up key.properties file for code signing
         script: |
+          mkdir -p $FCI_BUILD_DIR/android/app 
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
           storePassword=$FCI_KEYSTORE_PASSWORD
