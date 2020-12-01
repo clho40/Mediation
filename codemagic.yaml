@@ -33,7 +33,9 @@ workflows:
           storeFile=/tmp/keystore.keystore
           EOF          
       - name: Build Android app
-        script: ./gradlew assembleRelease
+        script: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/**/**/*.apk
     publishing:
