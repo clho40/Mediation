@@ -3,13 +3,14 @@ plugins {
     id 'kotlin-android'
 }
 
-ext {
-    PUBLISH_GROUP_ID = 'com.hmscl.huawei.ads'
-    PUBLISH_ARTIFACT_ID = 'mediation_adapter_admob'
-    PUBLISH_VERSION = '1.2'
+if (System.getenv()["CI"]) {
+    ext {
+        PUBLISH_GROUP_ID = 'com.hmscl.huawei.ads'
+        PUBLISH_ARTIFACT_ID = 'mediation_adapter_admob'
+        PUBLISH_VERSION = '1.2'
+    }
+    apply from: 'publish.gradle'
 }
-
-apply from: 'publish.gradle'
 
 android {
     compileSdkVersion 30
