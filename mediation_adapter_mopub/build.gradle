@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
 }
 
-if (System.getenv()["CI"]) {
+if (!System.getenv()["CI"]) {
     ext {
         PUBLISH_GROUP_ID = 'com.hmscl.huawei.ads'
         PUBLISH_ARTIFACT_ID = 'mediation_adapter_admob'
