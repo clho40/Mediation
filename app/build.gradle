@@ -14,12 +14,8 @@ android {
         targetSdkVersion 30
         versionCode appVersionCode
         versionName "2.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
     signingConfigs {
         release {
@@ -31,6 +27,8 @@ android {
                 v1SigningEnabled true
                 v2SigningEnabled true
             } else {
+                Properties properties = new Properties()
+                properties.load(project.rootProject.file('local.properties').newDataInputStream())
                 storeFile file('keystore.jks')
                 keyAlias properties.getProperty('keystore.keyAlias')
                 keyPassword properties.getProperty('keystore.keyPassword')
