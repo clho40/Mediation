@@ -69,7 +69,7 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
 
     private fun loadMultisizeBanner() {
         multisizeBannerId = AATKit.createPlacement("TestMultisizeBanner", PlacementSize.MultiSizeBanner)
-        val mainLayout = aat_multisizebanner as FrameLayout
+//        val mainLayout = aat_multisizebanner as FrameLayout
         AATKit.startPlacementAutoReload(multisizeBannerId);
     }
 
@@ -116,6 +116,9 @@ class AddapptrFragment : Fragment(), AATKit.Delegate {
                     nativeBannerView.mediaView = ad_media
                     nativeBannerView.adSourceView = ad_source
                     nativeBannerView.callToActionView = ad_call_to_action
+                }
+                else -> {
+                    Utils.showToast(requireContext(),"Ads network not supported")
                 }
             }
             ad_title.text = AATKit.getNativeAdTitle(nativeAd)
