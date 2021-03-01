@@ -83,15 +83,15 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 4. Native
 
 
-## 1.2 Flutter
+## 1.1 Flutter
 
 
 | Ad Type        | Flutter SDK Support           |
 | ------------- |:-------------:|
 | Banner Ad      | Supported |
 | Interstitial Ad      | Supported     |
-| Rewarded Video Ad | Supported    |
-| Native Ad  | Not supported by Flutter  |
+| Rewarded Ad | Supported    |
+| Native Ad  | Not supported  |
 
 
 
