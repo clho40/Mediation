@@ -94,7 +94,7 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 | Native Ad  | Not supported (Check [this](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) link to integrate Huawei Ads kit to Flutter.)  |
 
 
- - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub and [SDK integration] to Android side of the flutter project (https://github.com/clho40/Mediation/tree/main/mediation_adapter_mopub#integrate-the-sdk) are done,  follow this [link](https://pub.dev/packages/mopub_flutter/install) to integrate mopub_flutter SDK to your project.
+ - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub and [SDK integration](https://github.com/clho40/Mediation/tree/main/mediation_adapter_mopub#integrate-the-sdk) to Android side of the flutter project  are done,  follow this [link](https://pub.dev/packages/mopub_flutter/install) to integrate mopub_flutter SDK to your project.
 
 - To avoid "java.lang.RuntimeException: Unable to get provider com.google.android.gms.ads.MobileAdsInitProvider"  error , you need to add an Admob ID to your application.If you are not using both Admob and Mopub in your project , add a sample Admob id to solve this exception.
 
