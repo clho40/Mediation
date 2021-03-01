@@ -135,6 +135,19 @@ void _loadRewardedAd() {
     }, reloadOnClosed: true);
   }
 ```
+- Show a rewarded ad
+```
+   RaisedButton(
+                  onPressed: () async {
+                    var result = await videoAd.isReady();
+                    print('Is Ready $result');
+                    if (result) {
+                      videoAd.show();
+                    }
+                  },
+                  child: Text('Show Video'),
+                )
+```
 
 - Load an interstitial ad
 
@@ -149,6 +162,16 @@ void _loadRewardedAd() {
     );    
   }
 ```
+- Show an interstitial ad
+ ```
+               RaisedButton(
+                  onPressed: () async {
+                    interstitialAd.show();
+                  },
+                  child: Text('Show interstitial'),
+                )
+ ```
+
 
 - Call a banner ad
 
