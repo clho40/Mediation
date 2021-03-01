@@ -82,7 +82,7 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 3. Rewarded
 4. Native
 
-# Cross Platforms
+# 1. Cross Platforms
 
 ## 1.1 Flutter
 
@@ -150,7 +150,7 @@ void _loadRewardedAd() {
   }
 ```
 
--Call a banner ad
+- Call a banner ad
 
 ```
 MoPubBannerAd(
