@@ -88,6 +88,8 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
  - Banner,Interstitial,rewarded ads are supported. (Currently native ads are not supported in Flutter.)
  - For native ads, integrate  Huawei Ads Kit to Flutter from [this](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) link. 
 
+ After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub is done.
+
 
 
 
