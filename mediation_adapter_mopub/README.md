@@ -82,17 +82,11 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 3. Rewarded
 4. Native
 
+# Cross Platforms
 
 ## 1.1 Flutter
 
-
-| Ad Type        | Flutter Mopub SDK Support           |
-| ------------- |:-------------:|
-| Banner Ad      | Supported |
-| Interstitial Ad      | Supported     |
-| Rewarded Ad | Supported    |
-| Native Ad  | Not supported (Check this [link](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) to Integrate Huawei Ads kit to flutter project.)  |
-
+Banner,Interstitial and rewarded ads are supported by Flutter. Currently there is no Mopub SDK to render native ads in flutter applications. Check this [link](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) to Integrate Huawei Native ads in the flutter application.
 
 
  - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub and [SDK integration](https://github.com/clho40/Mediation/tree/main/mediation_adapter_mopub#integrate-the-sdk) to Android side of the flutter project  are done,  follow this [link](https://pub.dev/packages/mopub_flutter/install) to integrate mopub_flutter SDK to your project.
@@ -114,18 +108,79 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 
 - Check [this](https://pub.dev/packages/mopub_flutter/example) link to see example dart code for mopub_flutter SDK. After you changed the 'ad_unit_id' to IDs created by custom event configuration process, Huawei ads will be succesfully shown in the flutter project using Mopub mediation.
 
+### Code Examples 
+
+- Call Mopub.init() in the initState() of your app
+```
+try {
+      MoPub.init('ad_unit_id', testMode: true).then((_) {
+        _loadRewardedAd();
+        _loadInterstitialAd();
+      });
+    } on PlatformException {}
+```
+- Load a rewarded ad 
+
+```
+void _loadRewardedAd() {
+    videoAd = MoPubRewardedVideoAd('ad_unit_id',
+        (result, args) {
+      setState(() {
+        rewardedResult = '${result.toString()}____$args';
+      });
+      print('$result');
+      if (result == RewardedVideoAdResult.GRANT_REWARD) {
+        print('Grant reward: $args');
+      }
+    }, reloadOnClosed: true);
+  }
+```
+
+- Load an interstitial ad
+
+```
+   void _loadInterstitialAd() {
+    interstitialAd = MoPubInterstitialAd(
+      'ad_unit_id',
+      (result, args) {
+        print('Interstitial $result');
+      },
+      reloadOnClosed: true,
+    );    
+  }
+```
+
+-Call a banner ad
+
+```
+MoPubBannerAd(
+              adUnitId: 'ad_unit_id',
+              bannerSize: BannerSize.STANDARD,
+              keepAlive: true,
+              listener: (result, dynamic) {
+                print('$result');
+              },
+            );
+```
+
 
 ## 1.2 React Native
 
 MoPub does not officially support cross platforms. Therefore 3rd party SDKs must be used to integrate MoPub on React Native applications. In this demonstration, 3rd party SDK is used. Click [here](https://www.npmjs.com/package/react-native-mopub-sdk) to get more information about the SDK. 
-
-Before starting React-Native integration, make sure that you have successfully done [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub
 
 #### 1. Banner Ads
 
 Banner ads are not supported with this SDK.  To use banner ads in React Native app, please see the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/banner-0000001050439147) to get more information about HMS Core React Native SDK.
 
 #### 2. Interstitial Ads
+
+- First import interstitial ads from React Native Mopub SDK:
+
+```   
+import { RNMoPubInterstitial} from 'react-native-mopub-sdk';
+```
+
+- Next, create a view for the interstitial:
 
 ```   
 <TouchableOpacity style={{ width: 100, height: 30, backgroundColor: 'red', marginTop: 10 }} onPress={() =>
@@ -135,6 +190,21 @@ Banner ads are not supported with this SDK.  To use banner ads in React Native a
             load Interstitial ad
                   </Text>
         </TouchableOpacity>
+
+```
+
+- Define listeners for the interstitial:
+
+```   
+ RNMoPubInterstitial.initializeInterstitialAd(INTERSTITIAL_UNIT_ID);
+    RNMoPubInterstitial.addEventListener('onLoaded', () => {
+      console.log('Interstitial Loaded')
+      RNMoPubInterstitial.show()
+    });
+    RNMoPubInterstitial.addEventListener('onFailed', message => console.log('Interstitial failed: ' + message));
+    RNMoPubInterstitial.addEventListener('onClicked', () => console.log('Interstitial clicked'));
+    RNMoPubInterstitial.addEventListener('onShown', () => console.log('Interstitial shown'));
+    RNMoPubInterstitial.addEventListener('onDismissed', () => console.log('Interstitial dismissed'));
 
 ```
 
