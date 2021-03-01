@@ -86,7 +86,7 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 ## 1.2 Flutter
 
 
-| Ad Type        | Flutter support           |
+| Ad Type        | Flutter SDK Support           |
 | ------------- |:-------------:|
 | Banner Ad      | Supported |
 | Interstitial Ad      | Supported     |
@@ -94,10 +94,18 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 | Native Ad  | Not supported (Check [this](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) link to integrate Huawei Ads kit to Flutter.)  |
 
 
- - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub is done, follow this [link](https://pub.dev/packages/mopub_flutter/install) to integrate mopub_flutter SDK to your project.
+ - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub and [SDK integration] to Android side of the flutter project (https://github.com/clho40/Mediation/tree/main/mediation_adapter_mopub#integrate-the-sdk) are done,  follow this [link](https://pub.dev/packages/mopub_flutter/install) to integrate mopub_flutter SDK to your project.
 
+- To avoid "java.lang.RuntimeException: Unable to get provider com.google.android.gms.ads.MobileAdsInitProvider"  error , you need to add an Admob ID to your application.If you are not using both Admob and Mopub in your project , add a sample Admob id to solve this exception.
 
+```
+<meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            
+            //add this meta-data tag to the AndroidManifest.xml file (Open android side of the flutter project to edit this file.)
+```
 
-
+- Check [this](https://pub.dev/packages/mopub_flutter/example) link to see example dart code for mopub_flutter SDK. After you changed the 'ad_unit_id' to IDs created by custom event configuration process, Huawei ads will be succesfully shown in the flutter project using Mopub mediation.
 
 
