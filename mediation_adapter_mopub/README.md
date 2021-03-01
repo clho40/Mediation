@@ -81,3 +81,15 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 2. Interstitial
 3. Rewarded
 4. Native
+
+
+## 1.2 Flutter
+
+ - Banner,Interstitial,rewarded ads are supported. (Currently native ads are not supported in Flutter.)
+ - For native ads, integrate  Huawei Ads Kit to Flutter from [this](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) link. 
+
+
+
+
+
+
