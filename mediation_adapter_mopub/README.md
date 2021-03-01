@@ -86,7 +86,7 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 ## 1.1 Flutter
 
 
-| Ad Type        | Flutter SDK Support           |
+| Ad Type        | Flutter Mopub SDK Support           |
 | ------------- |:-------------:|
 | Banner Ad      | Supported |
 | Interstitial Ad      | Supported     |
