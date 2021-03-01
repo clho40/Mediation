@@ -91,7 +91,7 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 | Banner Ad      | Supported |
 | Interstitial Ad      | Supported     |
 | Rewarded Video Ad | Supported    |
-| Native Ad  | Not supported (Check [this](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) link to integrate Huawei Ads kit to Flutter.)  |
+| Native Ad  | Not supported by Flutter  |
 
 
 
