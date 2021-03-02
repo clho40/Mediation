@@ -82,9 +82,9 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 3. Rewarded
 4. Native
 
-# 1. Cross Platforms
+# Cross Platforms
 
-## 1.1 Flutter
+## Flutter
 
 Banner,Interstitial and rewarded ads are supported by Flutter. Currently there is no Mopub SDK to render native ads in flutter applications. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817)  to Integrate Huawei Native ads separately in flutter applications.
 
@@ -187,7 +187,7 @@ MoPubBannerAd(
 ```
 
 
-## 1.2 React Native
+## React Native
 
 MoPub does not officially support cross platforms. Therefore 3rd party SDKs must be used to integrate MoPub on React Native applications. In this demonstration, 3rd party SDK is used. Click [here](https://www.npmjs.com/package/react-native-mopub-sdk) to get more information about the SDK. 
 
