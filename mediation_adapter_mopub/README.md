@@ -106,7 +106,7 @@ Banner,Interstitial and rewarded ads are supported by Flutter. Currently there i
 ```
 
 
-- Check [this](https://pub.dev/packages/mopub_flutter/example) link to see example dart code for mopub_flutter SDK. After 'ad_unit_id' is changed  to IDs created by custom event configuration process, Huawei ads will be succesfully shown in the flutter project using Mopub mediation.
+- Follow [this](https://pub.dev/packages/mopub_flutter/example) link to see example dart code for mopub_flutter SDK. After 'ad_unit_id' is changed  to IDs created by custom event configuration process, Huawei ads will be succesfully shown in the flutter project using Mopub mediation.
 
 ### Code Examples 
 
