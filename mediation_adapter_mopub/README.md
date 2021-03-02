@@ -86,7 +86,7 @@ mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
 
 ## Flutter
 
-Banner,Interstitial and rewarded ads are supported by Flutter. Currently there is no Mopub SDK to render native ads in flutter applications. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817)  to Integrate Huawei Native ads separately in flutter applications.
+  MoPub does not officially support cross platforms. Therefore a 3rd party SDK must be used to integrate MoPub on flutter applications. Banner,Interstitial and rewarded ads are supported by 3rd party SDKs. Click [here](https://pub.dev/packages/mopub_flutter) to get more information about the mopub_flutter SDK.
 
 
  - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub and [Mediation SDK integration](https://github.com/clho40/Mediation/tree/main/mediation_adapter_mopub#integrate-the-sdk) to Android side of the flutter project  are done,  follow [this](https://pub.dev/packages/mopub_flutter/install) link to integrate mopub_flutter SDK to your project.
@@ -119,6 +119,47 @@ try {
       });
     } on PlatformException {}
 ```
+#### 1. Banner Ads
+
+- Call a banner ad
+
+```
+MoPubBannerAd(
+              adUnitId: 'ad_unit_id',
+              bannerSize: BannerSize.STANDARD,
+              keepAlive: true,
+              listener: (result, dynamic) {
+                print('$result');
+              },
+            );
+```
+
+#### 2. Interstitial Ads
+
+- Load an interstitial ad
+
+```
+   void _loadInterstitialAd() {
+    interstitialAd = MoPubInterstitialAd(
+      'ad_unit_id',
+      (result, args) {
+        print('Interstitial $result');
+      },
+      reloadOnClosed: true,
+    );    
+  }
+```
+- Show an interstitial ad
+ ```
+               RaisedButton(
+                  onPressed: () async {
+                    interstitialAd.show();
+                  },
+                  child: Text('Show interstitial'),
+                )
+ ```
+ #### 3. Rewarded Ads
+ 
 - Load a rewarded ad 
 
 ```
@@ -149,42 +190,10 @@ void _loadRewardedAd() {
                 )
 ```
 
-- Load an interstitial ad
+ #### 4. Native Ads
 
-```
-   void _loadInterstitialAd() {
-    interstitialAd = MoPubInterstitialAd(
-      'ad_unit_id',
-      (result, args) {
-        print('Interstitial $result');
-      },
-      reloadOnClosed: true,
-    );    
-  }
-```
-- Show an interstitial ad
- ```
-               RaisedButton(
-                  onPressed: () async {
-                    interstitialAd.show();
-                  },
-                  child: Text('Show interstitial'),
-                )
- ```
+  Currently there is no Mopub SDK to render native ads in flutter applications. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817)  to Integrate Huawei Native ads separately in flutter applications.
 
-
-- Call a banner ad
-
-```
-MoPubBannerAd(
-              adUnitId: 'ad_unit_id',
-              bannerSize: BannerSize.STANDARD,
-              keepAlive: true,
-              listener: (result, dynamic) {
-                print('$result');
-              },
-            );
-```
 
 
 ## React Native
