@@ -24,13 +24,13 @@ In this documentation we explained how to use Huawei-Admob mediation with in the
 1. Sign in to [Google AdMob console] ([https://apps.admob.com/v2](https://apps.admob.com/v2))
 2. Go to "**Mediation -> Create a new Mediation Group**" (or, use one of the existing Mediation groups)
 3. Under the "**Ad Sources**" section, click "**Add Custom Event**" Give it a label (eg: Huawei Banner Custom Event) and an eCPM, click "**Continue**"
-4. Enter the class name "**com.hmscl.huawei.ads.mediation\_adapter\_admob.all\_ads*" as the Class Name, and your Huawei's AdUnit ID from step 1 as the parameter
+4. Enter the class name "**com.hmscl.huawei.ads.mediation\_adapter\_admob.all\_ads**" as the Class Name, and your Huawei's AdUnit ID from step 1 as the parameter
 5. Add the adapter and its dependencies into your project
 6. Configuration of custom event is done.
 
 # Integrate the Huawei Mediation SDK
 
-**Note** : _A device with Huawei Mobile Services (HMS) installed is required
+**Note** : A device with Huawei Mobile Services (HMS) installed is required
 
 In the **project-level** build.gradle, include Huawei's Maven repository.
 
