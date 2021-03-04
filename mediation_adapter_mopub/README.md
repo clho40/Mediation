@@ -244,7 +244,7 @@ child: Text('Show Video'),
 
 Native ads are not supported with this SDK. To use Native ads in Flutter app, please check the HMS Core Ads Kit Flutter SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) to get more information about HMS Core React Native SDK.
 
-### Cordova
+## Cordova
 
 Because MoPub ads for Cordova platform is not officially supported and there is no stable MoPub plugin for Cordova, MoPub-Huawei Ads Mediation is not possible on Cordova platform.
 
