@@ -1,40 +1,29 @@
-# Huawei Ads <> MoPub mediation adapter
-This is a project to demostrate how to use MoPub's mediation feature with Huawei Ads Kit.
+# Huawei-Mopub Mediation Github Documentation
 
-## Configure a custom event on MoPub:
+This is a project to demonstrate how to use MoPub’s mediation feature with Huawei Ads Kit.
+
+## Compatibility
+
+|   | Banner Ad | Interstitial Ad | Rewarded Ad | Native Ad |
+| --- | --- | --- | --- | --- |
+| Native (Java/Kotlin) | ✅ | ✅ | ✅ | ✅ |
+| React Native | ❌ | ✅ | ❌ | ❌ |
+| Flutter |✅|✅| ✅ | ❌ |
+| Cordova |❌|❌| ❌ | ❌ |
+
+## How to start?
+  
+## Create an ad unit on Huawei Publisher Service
+
+1. Sign in to [Huawei Developer Console] (https://developer.huawei.com/consumer/en/console) and create an AdUnit
+
+## Create a custom event on MoPub:
 1. Sign in to your [Huawei Developer Console](https://developer.huawei.com/consumer/en/console) and create an AdUnit
 2. Sign in to your [MoPub console](https://app.mopub.com/)
 3. Go to one of your orders and create a new line item
 4. Select **Network line item** as the type
 5. Select **Custom SDK network** as the network
 6. Enter the **Custom event class** and **Custom event data** according to the type of your Ad. Refer to the section below.
-
-## Integrate the SDK:
-In your project-level build.gradle, include Huawei's Maven repository
-```
-repositories {
-        google()
-        jcenter()
-        maven { url 'https://developer.huawei.com/repo/' } // Add this line
-}
- ...
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://developer.huawei.com/repo/' } //Add this line
-    }
-}
-```
-
-In your app-level build.gradle, include Huawei Ads dependency (required by the adapter) and the adapter
-```
-dependencies {
-    ...
-    implementation 'com.huawei.hms:ads-lite:13.4.33.300'
-    implementation 'com.hmscl.huawei.ads:mediation_adapter_mopub:1.2'
-}
-```
 
 ## Custom event class
 | Ad Type        | Custom event class           |
@@ -45,7 +34,7 @@ dependencies {
 | Native Ad (Basic) | ccom.hmscl.huawei.ads.mediation_adapter_mopub.native_basic    |
 | Native Ad (Advanced) | com.hmscl.huawei.ads.mediation_adapter_mopub.native_advanced    |
 
-## Custom event data
+## Custom Event Parameters
 ```
 {
     "adUnitID": "222",  <-- Required
@@ -57,193 +46,211 @@ dependencies {
 ```
 Other values are optional
 
-## Native Ad Advanced
-You need to register your own Ad Renderer using HuaweiAdsAdRenderer class.
+## Integrate the Huawei Mediation SDK
+
+In the project-level build.gradle, include Huawei’s maven repository
+
+```groovy
+repositories {
+    google()
+    jcenter() // Also, make sure jcenter() is included
+    maven { url 'https://developer.huawei.com/repo/' } // Add this line
+}
+
+...
+
+allprojects {
+    repositories {
+        google()
+        jcenter() // Also, make sure jcenter() is included
+        maven { url 'https://developer.huawei.com/repo/' } //Add this line
+    }
+}
 ```
-val huaweiAdsAdRenderer = HuaweiAdsAdRenderer(
-            HuaweiAdsViewBinder.Builder(R.layout.view_mopub_nativead_huawei)
-                .titleId(R.id.native_title)
-                .textId(R.id.native_text)
-                .mediaLayoutId(R.id.native_media_layout)
-                .iconImageId(R.id.native_icon_image)
-                .callToActionId(R.id.native_cta)
-                .privacyInformationIconImageId(R.id.native_privacy_information_icon_image)
-                .build())
+In the app-level build.gradle, include Huawei Ads dependency (required by the adapter) and the Huawei mediation adapter
 
-mAdAdapter.registerAdRenderer(huaweiAdsAdRenderer)
+```groovy
+dependencies {
+    implementation 'com.huawei.hms:ads-lite:13.4.37.300'
+    implementation 'com.hmscl.huawei.ads:mediation_adapter_admob:1.4'
+}
 ```
+**Important:**: To add Huawei Ads Kit SDK and Mediation adapter to the cross platforms apps, the native project should be opened with Android Studio.
 
-## Device requirement
-- A device with Huawei Mobile Services (HMS) installed
- 
-## Supported ad type:
-1. Banner
-2. Interstitial
-3. Rewarded
-4. Native
+**Important:** A device with Huawei Mobile Services (HMS) installed is required.
 
-# Cross Platforms
+## Platforms
 
-## Flutter
+### Native
 
-  MoPub does not officially support cross platforms. Therefore a 3rd party SDK must be used to integrate MoPub on flutter applications. Banner,Interstitial and rewarded ads are supported by 3rd party SDKs. Click [here](https://pub.dev/packages/mopub_flutter) to get more information about the mopub_flutter SDK.
+This section demonstrates how to use MoPub mediation feature with Huawei Ads Kit on Native Android app. 
 
+Firstly, integrate the MoPub SDK for Android:
 
- - After the [Custom event configuration](https://github.com/clho40/Mediation/blob/main/mediation_adapter_mopub/README.md#configure-a-custom-event-on-mopub) on Mopub and [Mediation SDK integration](https://github.com/clho40/Mediation/tree/main/mediation_adapter_mopub#integrate-the-sdk) to Android side of the flutter project  are done,  follow [this](https://pub.dev/packages/mopub_flutter/install) link to integrate mopub_flutter SDK to your project.
+[MoPub Android SDK](https://developers.mopub.com/publishers/android/integrate/) can be used for all ad types.
 
+**Note:** Developers can find app level build.gradle in their project from __**"app-folder/app/build.gradle"**__
 
+**Banner Ads**
 
-- To avoid "java.lang.RuntimeException: Unable to get provider com.google.android.gms.ads.MobileAdsInitProvider"  error ,  an Admob ID needs to be added  to the  application.If  both Admob and Mopub are not used in the  project , add a sample Admob id to solve this exception.
+To use Banner ads in Native android apps, please check the MoPub SDK. Click [here](https://developers.mopub.com/publishers/android/banner/) to get more information about MoPub SDKs Banner Ad development.
 
+**Interstitial Ads**
 
+To use Interstitial ads in Native android apps, please check the MoPub SDK. Click [here](https://developers.mopub.com/publishers/android/interstitial/) to get more information about MoPub SDKs Interstitial Ad development.
 
-```
-<meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
-            
-            //add this meta-data tag to the AndroidManifest.xml file (Open android side of the flutter project to edit this file.)
-```
+**Rewarded Ads**
 
+To use Rewarded ads in Native android apps, please check the MoPub SDK. Click [here](https://developers.mopub.com/publishers/android/rewarded-ad/) to get more information about MoPub SDKs Rewarded Ad development.
 
-- Follow [this](https://pub.dev/packages/mopub_flutter/example) link to see example dart code for mopub_flutter SDK. After 'ad_unit_id' is changed  to IDs created by custom event configuration process, Huawei ads will be succesfully shown in the flutter project using Mopub mediation.
+**Native Ads**
 
-### Code Examples 
+To use Native ads in Native android apps, please check the MoPub SDK. Click [here](https://developers.mopub.com/publishers/android/native-recyclerview/) to get more information about MoPub SDKs Native Ad development.
 
-- Call Mopub.init() in the initState() of your app
-```
-try {
-      MoPub.init('ad_unit_id', testMode: true).then((_) {
-        _loadRewardedAd();
-        _loadInterstitialAd();
-      });
-    } on PlatformException {}
-```
-#### 1. Banner Ads
+### React Native
 
-- Call a banner ad
+This section demonstrates how to use MoPub mediation feature with Huawei Ads Kit on React Native apps.
 
-```
-MoPubBannerAd(
-              adUnitId: 'ad_unit_id',
-              bannerSize: BannerSize.STANDARD,
-              keepAlive: true,
-              listener: (result, dynamic) {
-                print('$result');
-              },
-            );
-```
+**Important:** There is no official React Native SDK for MoPub, therefore third party SDKs has been used in the demonstrations.
 
-#### 2. Interstitial Ads
+Firstly, integrate the React Native MoPub SDK as below depending on type of ad:
 
-- Load an interstitial ad
+For **Interstitial** ad [react-native-mopub-sdk](https://github.com/aliasad106/React-Native-Mopub-SDK) SDK can be used.
 
-```
-   void _loadInterstitialAd() {
-    interstitialAd = MoPubInterstitialAd(
-      'ad_unit_id',
-      (result, args) {
-        print('Interstitial $result');
-      },
-      reloadOnClosed: true,
-    );    
-  }
-```
-- Show an interstitial ad
- ```
-               RaisedButton(
-                  onPressed: () async {
-                    interstitialAd.show();
-                  },
-                  child: Text('Show interstitial'),
-                )
- ```
- #### 3. Rewarded Ads
- 
-- Load a rewarded ad 
+**Note:** Developers can find app level build.gradle in their project from __**"app-folder/android/app/build.gradle"**__
 
-```
-void _loadRewardedAd() {
-    videoAd = MoPubRewardedVideoAd('ad_unit_id',
-        (result, args) {
-      setState(() {
-        rewardedResult = '${result.toString()}____$args';
-      });
-      print('$result');
-      if (result == RewardedVideoAdResult.GRANT_REWARD) {
-        print('Grant reward: $args');
-      }
-    }, reloadOnClosed: true);
-  }
-```
-- Show a rewarded ad
-```
-   RaisedButton(
-                  onPressed: () async {
-                    var result = await videoAd.isReady();
-                    print('Is Ready $result');
-                    if (result) {
-                      videoAd.show();
-                    }
-                  },
-                  child: Text('Show Video'),
-                )
-```
+Then use the following sample codes based on specific ad types.
 
- #### 4. Native Ads
+  
+## Sample Codes Based on Ad Types
 
-  Currently there is no Mopub SDK to render native ads in flutter applications. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817)  to Integrate Huawei Native ads separately in flutter applications.
+**Banner Ads**
 
+Banner ads are not supported with this SDK. To use banner ads in React Native app, please check the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/banner-0000001050439147) to get more information about HMS Core React Native SDK.
 
+**Interstitial Ad**
 
-## React Native
-
-MoPub does not officially support cross platforms. Therefore 3rd party SDKs must be used to integrate MoPub on React Native applications. In this demonstration, 3rd party SDK is used. Click [here](https://www.npmjs.com/package/react-native-mopub-sdk) to get more information about the SDK. 
-
-#### 1. Banner Ads
-
-Banner ads are not supported with this SDK.  To use banner ads in React Native app, please see the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/banner-0000001050439147) to get more information about HMS Core React Native SDK.
-
-#### 2. Interstitial Ads
-
-- First import interstitial ads from React Native Mopub SDK:
-
-```   
-import { RNMoPubInterstitial} from 'react-native-mopub-sdk';
-```
-
-- Next, create a view for the interstitial:
-
-```   
+```jsx
 <TouchableOpacity style={{ width: 100, height: 30, backgroundColor: 'red', marginTop: 10 }} onPress={() =>
           RNMoPubInterstitial.loadAd()
         }>
           <Text>
-            load Interstitial ad
-                  </Text>
+            load ad
+                    </Text>
         </TouchableOpacity>
-
 ```
 
-- Define listeners for the interstitial:
+**Rewarded Ads**
 
-```   
- RNMoPubInterstitial.initializeInterstitialAd(INTERSTITIAL_UNIT_ID);
-    RNMoPubInterstitial.addEventListener('onLoaded', () => {
-      console.log('Interstitial Loaded')
-      RNMoPubInterstitial.show()
-    });
-    RNMoPubInterstitial.addEventListener('onFailed', message => console.log('Interstitial failed: ' + message));
-    RNMoPubInterstitial.addEventListener('onClicked', () => console.log('Interstitial clicked'));
-    RNMoPubInterstitial.addEventListener('onShown', () => console.log('Interstitial shown'));
-    RNMoPubInterstitial.addEventListener('onDismissed', () => console.log('Interstitial dismissed'));
+Rewarded ads are not supported with this SDK. To use Rewarded ads in React Native app, please check the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/reward-0000001050196920) to get more information about HMS Core React Native SDK.
 
+**Native Ads**
+
+Native ads are not supported with this SDK. To use Native ads in React Native app, please check the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-0000001050316236) to get more information about HMS Core React Native SDK.
+
+### Flutter
+
+This section demonstrates how to use MoPub mediation feature with Huawei Ads Kit on Flutter.
+
+**Important:** There is no official Flutter SDK for MoPub therefore third party SDKs has been used in the demonstrations.
+
+Firstly, integrate the MoPub Flutter SKD as below depending on type of ad:
+
+For **Banner** , **Interstitial** and **Rewarded** ad types [mopub\_flutter](https://pub.dev/packages/mopub_flutter/install) SDK can be used.
+
+**Note:** Developers can find app level build.gradle in their project from __**"app-folder/android/app/build.gradle"**__
+
+**Note:** To avoid **"java.lang.RuntimeException: Unable to get provider com.google.android.gms.ads.MobileAdsInitProvider"** error, an Admob ID needs to be added to the application. If both Admob and MoPub are not used in the project, add a sample Admob id to solve this exception.
+
+**Solution:** Add this meta-data tag to the AndroidManifest.xml file (Open android side of the flutter project to edit Manifest file.)
+
+```groovy
+<meta-data
+ 	android:name="com.google.android.gms.ads.APPLICATION_ID"
+ 	android:value="ca-app-pub-3940256099942544~3347511713"/>
 ```
 
-#### 3. Rewarded Ads
+Then use the following sample codes based on specific ad types.
 
-Rewarded ads are not supported with this SDK.  To use Rewarded ads in React Native app, please see the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/reward-0000001050196920) to get more information about HMS Core React Native SDK.
+## Sample Codes Based on Ad Types
 
-#### 4. Native Ads
+**Banner Ad**
+```dart
+try {
+   MoPub.init('ad_unit_id', testMode: true).then((_) {
+_  loadRewardedAd();
+_  loadInterstitialAd();
+         });
+ } 
+```
+```dart
+MoPubBannerAd(
+   adUnitId: 'ad_unit_id',
+   bannerSize: BannerSize.STANDARD,
+   keepAlive: true,
+   listener: (result, dynamic) {
+     print('$result');
+         },
+      );
+```
+**Interstitial Ad**
+```dart
+void _loadInterstitialAd() {
+  interstitialAd = MoPubInterstitialAd(
+    'ad_unit_id',
+        (result, args) {
+      print('Interstitial $result');
+    },
+    reloadOnClosed: true,
+  );
+}
+```
+```dart
+RaisedButton(
+    onPressed: () async {
+    interstitialAd.show();
+    },
+   child: Text('Show interstitial'),
+ )
+ ```
+**Rewarded Ads**
+```dart
+void _loadRewardedAd() {
+  videoAd = MoPubRewardedVideoAd('ad_unit_id',
+          (result, args) {
+        setState(() {
+          rewardedResult = '${result.toString()}____$args';
+        });
+        print('$result');
+        if (result == RewardedVideoAdResult.GRANT_REWARD) {
+          print('Grant reward: $args');
+        }
+      }, reloadOnClosed: true);
+}
+```
+```dart
+RaisedButton(
+onPressed: () async {
+   var result = await videoAd.isReady();
+   print('Is Ready $result');
+   if (result) {
+    videoAd.show();
+  }
+},
+child: Text('Show Video'),
+)
+```
+**Native Ads**
 
-Native ads are not supported with this SDK.  To use Native ads in React Native app, please see the HMS Core Ads Kit React Native SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-0000001050316236) to get more information about HMS Core React Native SDK.
+Native ads are not supported with this SDK. To use Native ads in Flutter app, please check the HMS Core Ads Kit Flutter SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/native-ads-0000001050198817) to get more information about HMS Core React Native SDK.
+
+
+Because MoPub ads for Cordova platform is not officially supported and there is no stable MoPub plugin for Cordova, MoPub-Huawei Ads Mediation is not possible on Cordova platform.
+
+Huawei Ads can still be used on Cordova, for implementation click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/introduction-0000001050437673).
+
+### Cordova
+
+Because MoPub ads for Cordova platform is not officially supported and there is no stable MoPub plugin for Cordova, MoPub-Huawei Ads Mediation is not possible on Cordova platform.
+
+Huawei Ads can still be used on Cordova, for implementation click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/introduction-0000001050437673).
