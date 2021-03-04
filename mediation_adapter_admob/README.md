@@ -1,10 +1,10 @@
-# Huawei-Admob Mediation Github Documentation
+ <h1 align="center">Huawei-Admob Mediation Github Documentation</h3>
 
-## Introduction
+# Introduction
 
 In this documentation we explained how to use Huawei-Admob mediation with in the different platforms.
 
-## Compatibility
+# Compatibility
 
 |   | Banner Ad | Interstitial Ad | Rewarded Ad | Native Ad |
 | --- | --- | --- | --- | --- |
@@ -13,13 +13,13 @@ In this documentation we explained how to use Huawei-Admob mediation with in the
 | Flutter |✅|✅| ❌ | ❌ |
 | Cordova |✅|✅| ❌ | ❌ |
 
-## How to start?
+# How to start?
   
-### Create an ad unit on Huawei Publisher Service
+## Create an ad unit on Huawei Publisher Service
 
 1. Sign in to [Huawei Developer Console] (https://developer.huawei.com/consumer/en/console) and create an AdUnit
 
-### Create a custom event on Google AdMob
+## Create a custom event on Google AdMob
 
 1. Sign in to [Google AdMob console] ([https://apps.admob.com/v2](https://apps.admob.com/v2))
 2. Go to "**Mediation -> Create a new Mediation Group**" (or, use one of the existing Mediation groups)
@@ -71,9 +71,9 @@ dependencies {
 
 **Important:** _To add Huawei Ads Kit SDK and Mediation adapter, the native project should be opened with Android Studio._
 
-## Platforms
+# Platforms
 
-### Native
+## Native
 
 This section demonstrates how to use AdMob mediation feature with Huawei Ads Kit on Native android app.
 
@@ -83,23 +83,23 @@ Firstly, integrate the Admob SDK for Android
 
 **Note** : Developers can find app level build.gradle in their project from __**"app-folder/app/build.gradle"**__
 
-**Banner Ad**
+### **Banner Ad**
 
 To use _Banner_ ads in Native android apps, please check the Admob SDK. Click [here](https://developers.google.com/admob/android/banner) to get more information about Admob SDKs _Banner_ Ad development.
 
-**Interstitial Ad**
+### **Interstitial Ad**
 
 To use Interstitial ads in Native android apps, please check the Admob SDK. Click [here](https://developers.google.com/admob/android/interstitial-fullscreen) to get more information about Admob SDKs Interstitial Ad development.
 
-**Rewarded Ad**
+### **Rewarded Ad**
 
 To use _Rewarded_ ads in Native android _Rewarded_, please check the Admob SDK. Click [here](https://developers.google.com/admob/android/rewarded-fullscreen) to get more information about Admob SDKs _Banner_ Ad development.
 
-**Native Ads**
+### **Native Ads**
 
 To use _Native_ ads in Native android apps, please check the Admob SDK. Click [here](https://developers.google.com/admob/android/native/start) to get more information about Admob SDKs _Native_ Ad development.
 
-### React Native
+## React Native
 
 
 This section demonstrates how to use AdMob mediation feature with Huawei Ads Kit on React-Native.
@@ -116,9 +116,9 @@ For **Native** ad type [react-native-admob-native-ads](https://github.com/ammara
 
 Then use the following sample codes based on specific ad types.
 
-#### **Sample Codes Based on Ad Types**
+## **Sample Codes Based on Ad Types**
 
-**Banner Ad**
+### **Banner Ad**
 
 ```jsx
 <AdMobBanner
@@ -128,7 +128,7 @@ testDevices={[AdMobBanner.simulatorId]}
 onAdFailedToLoad={error => console.error(error)} />
 ```
 
-**Interstitial Ad**
+### **Interstitial Ad**
 
 ```jsx
 AdMobInterstitial.setAdUnitID(InterstitialAdId);
@@ -136,13 +136,13 @@ AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
 AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
 ```
 
-**Rewarded Ad**
+### **Rewarded Ad**
 
 ```jsx
 AdMobRewarded.setAdUnitId(RewardedAdId);
 AdMobRewarded.requestAd().then(() => AdMobRewarded.showAd());
 ```
-**Native Ads**
+### **Native Ads**
 
 ```jsx
 <NativeAdView
@@ -150,7 +150,7 @@ adUnitID= {NativeAdId}
 onAdFailedToLoad={error => console.error(error)} /> 
 ```
 
-### Flutter
+## Flutter
 
 This section demonstrates how to use AdMob mediation feature with Huawei Ads Kit on Flutter.
 
@@ -162,20 +162,20 @@ Firstly, integrate the Flutter_ AdMob _SDKs as below depending on type of ad
 
 For **Banner** and **Interstitial** Ad types [admob\_flutter](https://github.com/kmcgill88/admob_flutter) SDK can be used.
 
-**Rewarded Ad**
+### **Rewarded Ad**
 
 Rewarded ads are not supported with this SDK. To use Rewarded ads in Flutter app, please check the HMS Core Ads Kit Flutter SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides-V1/rewarded-ads-0000001050315988-V1) to get more information about HMS Core Flutter SDKs Rewarded Ad development.
 
-**Native Ad**
+### **Native Ad**
 
 Native ads are not supported with this SDK. To use Native ads in Flutter app, please check the HMS Core Ads Kit Flutter SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides-V1/native-ads-0000001050198817-V1) to get more information about HMS Core Flutter SDKs Native Ad development.
 
 Then use the following sample codes based on specific ad types.
 
 
-#### **Sample Codes Based on Ad Types**
+## **Sample Codes Based on Ad Types**
 
-**Banner Ad**
+### **Banner Ad**
 
 ```dart
 …
@@ -194,7 +194,7 @@ child: AdmobBanner(
 ),
 …
 ```
-**Interstitial Ad**
+### **Interstitial Ad**
 
 ```dart
 …
@@ -209,7 +209,7 @@ interstitialAd = AdmobInterstitial(
 );
 ```
 
-### Cordova
+## Cordova
 
 This section demonstrates how to use AdMob mediation feature with Huawei Ads Kit on Cordova.
 
@@ -221,19 +221,19 @@ Firstly, integrate the Cordova_ AdMob _SDKs as below depending on type of ad
 
 For **Banner** and **Interstitial** Ad types [admob-plus](https://github.com/admob-plus/admob-plus) SDK can be used.
 
-**Rewarded Ad**
+### **Rewarded Ad**
 
 Rewarded ads are not supported with this SDK. To use Rewarded ads in Cordova app, please check the HMS Core Ads Kit Cordova SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides-V1/rewarded-ads-0000001050195456-V1) to get more information about HMS Core Cordova SDKs Rewarded Ad development.
 
-**Native Ad**
+### **Native Ad**
 
 Native ads are not supported in Cordova. To use Native Ads in Cordova App please check the HMS Core Ads Kit Cordova SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides-V1/native-ads-0000001050197495-V1) to get more information about HMS Core Cordova SDK Native Ad development.
 
 Then use the following sample codes based on specific ad types.
 
-### **Sample Codes Based on Ad Types**
+## **Sample Codes Based on Ad Types**
 
-**Banner Ads**
+### **Banner Ads**
 ```js
 showBannerAd() {
   const banner = new admob.BannerAd({
@@ -243,7 +243,7 @@ showBannerAd() {
 },
 ```
 
-**Interstitial Ads**
+### **Interstitial Ads**
 
 ```js
 showInterstitialAd() {
@@ -253,5 +253,69 @@ showInterstitialAd() {
   return interstitial.load().then(() => interstitial.show())
 },
 ```
+
+# Screenshots
+
+## AdMob
+<table>
+<tr>
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109941743-8626a780-7ce4-11eb-8aa8-4da1e3f1092f.png" width="200">
+
+Banner Ad
+</td>
+
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109941887-aa828400-7ce4-11eb-9409-d93adf506724.JPG" width="200">
+
+Interstitial Ad
+</td>
+
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109941974-c4bc6200-7ce4-11eb-81b8-e35a2589d528.JPG" width="200">
+
+Rewarded Ad
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109942031-d43bab00-7ce4-11eb-815f-403918a6b7f4.png" width="200">
+
+Native Ad
+</td>
+</tr>
+</tr>
+</table>
+
+## Huawei
+<table>
+<tr>
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109942123-ee758900-7ce4-11eb-96a3-11cce5454c51.png" width="200">
+
+Banner Ad
+</td>
+
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109939330-01d32500-7ce2-11eb-9e39-6a9237ca8c54.JPG" width="200">
+
+
+Interstitial Ad
+</td>
+
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109942227-0baa5780-7ce5-11eb-8b69-086924473db0.png" width="200">
+
+Rewarded Ad
+</td>
+<td>
+<img src="https://user-images.githubusercontent.com/41696219/109942307-211f8180-7ce5-11eb-8c3e-7d21903bf6d1.png" width="200">
+
+Native Ad
+</td>
+
+</tr>
+</tr>
+</table>
+
+
 
 
