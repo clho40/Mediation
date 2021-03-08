@@ -162,9 +162,7 @@ Firstly, integrate the Flutter_ AdMob _SDKs as below depending on type of ad
 
 For **Banner** and **Interstitial** Ad types [admob\_flutter](https://github.com/kmcgill88/admob_flutter) SDK can be used.
 
-### **Rewarded Ad**
-
-Rewarded ads are not supported with this SDK. To use Rewarded ads in Flutter app, please check the HMS Core Ads Kit Flutter SDK. Click [here](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides-V1/rewarded-ads-0000001050315988-V1) to get more information about HMS Core Flutter SDKs Rewarded Ad development.
+For **Banner** and **Rewarded** Ad types [googleads-mobile-flutter](https://github.com/googleads/googleads-mobile-flutter) SDK can be used.
 
 ### **Native Ad**
 
@@ -207,6 +205,21 @@ interstitialAd = AdmobInterstitial(
     handleEvent(event, args, 'Interstitial');
   },
 );
+```
+### **Rewarded Ad**
+
+```dart
+class RewardedAd extends AdWithoutView {
+  ...
+  static final String testAdUnitId = Platform.isAndroid
+      ? 'Your Rewarded Ad Unit ID'
+      : 'Your Rewarded Ad Unit ID';
+
+  @override
+  Future<void> load() async {
+    await instanceManager.loadRewardedAd(this);
+  }
+}
 ```
 
 ## Cordova
