@@ -73,7 +73,7 @@ In the app-level build.gradle, include Huawei Ads dependency (required by the ad
 ```groovy
 dependencies {
     implementation 'com.huawei.hms:ads-lite:13.4.37.300'
-    implementation 'com.hmscl.huawei.ads:mediation_adapter_admob:1.4'
+    implementation 'com.hmscl.huawei.ads:mediation_adapter_mopub:1.2
 }
 ```
 **Important:**: To add Huawei Ads Kit SDK and Mediation adapter to the cross platforms apps, the native project should be opened with Android Studio.
