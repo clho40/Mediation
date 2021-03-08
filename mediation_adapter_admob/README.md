@@ -10,7 +10,7 @@ In this documentation we explained how to use Huawei-Admob mediation with in the
 | --- | --- | --- | --- | --- |
 | Native (Java/Kotlin) | ✅ | ✅ | ✅ | ✅ |
 | React Native | ✅ | ✅ | ✅ | ✅ |
-| Flutter |✅|✅| ❌ | ❌ |
+| Flutter |✅|✅| ✅ | ❌ |
 | Cordova |✅|✅| ❌ | ❌ |
 
 # How to start?
