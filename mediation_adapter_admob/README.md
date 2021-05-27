@@ -39,6 +39,7 @@ repositories {
     google()
     jcenter() // Also, make sure jcenter() is included
     maven { url 'https://developer.huawei.com/repo/' } // Add this line
+    maven {url "https://jitpack.io"} // Add this line
 }
 
 ...
@@ -48,6 +49,7 @@ allprojects {
         google()
         jcenter() // Also, make sure jcenter() is included
         maven { url 'https://developer.huawei.com/repo/' } //Add this line
+        maven {url "https://jitpack.io"} // Add this line
     }
 }
 ```
@@ -56,8 +58,8 @@ In the app-level build.gradle, include Huawei Ads dependency (required by the ad
 
 ```groovy
 dependencies {
-    implementation 'com.huawei.hms:ads-lite:13.4.37.300'
-    implementation 'com.hmscl.huawei.ads:mediation_adapter_admob:1.4'
+    implementation 'com.huawei.hms:ads-lite:13.4.41.302'
+    implementation 'com.github.Explore-In-HMS:huawei.admob_mediation:1.0.0'
 }
 ```
 
