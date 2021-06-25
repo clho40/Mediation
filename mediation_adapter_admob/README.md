@@ -54,7 +54,13 @@ allprojects {
 }
 ```
 
-In the app-level build.gradle, include Huawei Ads dependency (required by the adapter) and the adapter
+```groovy
+dependencies {
+    implementation 'com.huawei.hms:ads:3.4.41.304'
+    implementation 'com.github.Explore-In-HMS:huawei.admob_mediation:1.0.0'
+}
+```
+> **_NOTE:_**  If your app can run only on Huawei mobile phones, you can integrate the Huawei Ads Lite SDK instead of Huawei Ads SDK (Optional)
 
 ```groovy
 dependencies {
